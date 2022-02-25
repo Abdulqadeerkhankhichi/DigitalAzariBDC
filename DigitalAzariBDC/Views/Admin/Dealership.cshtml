@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+
+    @*<link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css" />*@
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    @*<script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>*@
+  
+</head>
+<div class="container-xxl flex-grow-1 container-p-y">
+
+
+
+    <div class="card">
+        <div class="row">
+            <div class="col-md-6"> <h5 class="card-header">Dealerships/Business</h5></div>
+
+            <div class="col-md-6" > <a class="text-right" onclick="offcanvasAddUser" style="float:right;margin-right:1%"><button data-bs-toggle="modal" data-bs-target="#enableOTP" style="margin-top:1%; float:right" type="button" class=" text-right btn btn-primary"><i class="fa fa-plus"></i> Add Dealerships/Business</button></a></div>
+        </div>
+
+        <div class="card-body  table-responsive">
+            <table class=" table border-top" id="Dealership">
+                <thead>
+                    <tr>
+                        <th>Dealerships/Business</th>
+                        <th>Phone</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Milnes Chevrolet</td>
+                        <td>090078601</td>
+                        <td>
+                            <div class="d-flex">
+                                <a href="#" class="btn btn-primary shadow btn-sm sharp me-1 open-AddBookDialog" data-bs-toggle="modal" data-bs-target="#edit_brand_details"><i class="fa fa-pen"></i></a>
+                                <a href="#" class="btn btn-danger shadow btn-sm sharp open-AddBookDialog1" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="fa fa-trash"></i></a>
+                            </div>
+                            @*<div class="d-flex order-sm-0 order-1" style="float:right">
+            <button type="button" class="btn btn-icon btn-label-primary me-2">
+                <i class="bx bx-pencil"></i>
+            </button>
+            <button type="button" class="btn btn-icon btn-label-danger">
+                <i class="bx bx-trash-alt"></i>
+            </button>
+        </div>*@
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Offcanvas to add new user -->
+    
+    </div>
+
+
+
+    <div class="modal fade" id="enableOTP" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-simple modal-enable-otp modal-dialog-centered">
+            <div class="modal-content p-3 p-md-3">
+                <div class="modal-header" style="background-color:#5F3A81;">
+
+                    <h3 class="modal-title" style="color: white"><i class="fa fa-briefcase"></i> Dealerships/Business</h3>
+
+
+
+                </div>
+                <form id="enableOTPForm" class="row g-3" onsubmit="return false">
+                    <div class="modal-body">
+
+
+
+                        <div class="col-12 mb-2">
+                            <label class="text-black font-w600 form-label" for="name">Dealerships/Business NAME </label>
+                            <div class="input-group input-group-merge">
+                                <input type="text" id="name" name="name" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label class="text-black font-w600 form-label" for="name">TYPE</label>
+                            <select id="multicol-country" class="select2 form-select form-control " data-allow-clear="true">
+                                <option value="1">Select</option>
+                                <option value="Dealership">Dealership</option>
+                                <option value="Business">Business</option>
+
+                            </select>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label class="text-black font-w600 form-label" for="Phone">PHONE</label>
+                            <div class="input-group input-group-merge">
+                                <input type="text" id="Phone" name="Phone" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label class="text-black font-w600 form-label" for="Address">ADDRESS</label>
+                            <div class="input-group input-group-merge">
+                                <input type="text" id="Address" name="Address" class="form-control" />
+                            </div>
+                        </div>
+
+                        
+
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="reset" class="btn btn-danger light" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+                        <button type="submit" class="btn btn-primary me-sm-3 me-1">Submit</button>
+
+                       
+                    </div>
+                </form>
+        </div>
+        </div>
+    </div>
+</div>
+<script src="/assets/js/jquery-3.2.1.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $('#Dealership').DataTable({
+            searching: true,
+            "ordering": true,
+
+        });
+        $(".nav li").removeClass("active");
+        $('#Dealerships').addClass('active');
+        $('.js-example-basic-multiple').select2();
+    });
+</script>

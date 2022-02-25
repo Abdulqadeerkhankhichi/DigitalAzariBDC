@@ -1,0 +1,220 @@
+﻿
+@{
+    ViewBag.Title = "Appointments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    @*<script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>*@
+    <style>
+
+       
+        .custom-option-icon .custom-option-content {
+            text-align: center;
+            padding: 0.5em !important;
+        }
+
+        .avatar-sm {
+            width: 1.5rem;
+            height: 1.5rem;
+            padding-left: 0;
+            /* //border: 1px solid #d9dee3;*/
+            border-radius: 0rem;
+            margin-top: 8px;
+        }
+
+        .model {
+            margin-top: 23px;
+        }
+
+        .custom-option-icon .custom-option-body {
+            display: block;
+            margin-bottom: 0rem;
+        }
+
+        .custom-option-title {
+            /* // color:white !important;*/
+        }
+
+        .avatar {
+            background-color: #e7e7ff;
+        }
+
+        .custom-option {
+            padding-left: 0;
+            border: 0px solid #d9dee3;
+            border-radius: 0.5rem;
+        }
+
+        .remove {
+            text-transform: uppercase;
+            background-color: #e7e7ff;
+            flex-shrink: 0;
+            width: 100%;
+            max-width: 100%;
+            padding-right: 0rem;
+            padding-left: 0rem;
+            margin-top: var(--bs-gutter-y);
+        }
+    </style>
+</head>
+<div class="container-xxl flex-grow-1 container-p-y">
+
+
+    <div class="card">
+        <div class="row">
+            <div class="col-md-6"> <h5 class="card-header">APPOINTMENTS</h5></div>
+
+
+        </div>
+        <div class="card-body table-responsive">
+            <table class="datatables-users table border-top" id="EbayProduct">
+                <thead>
+                    <tr>
+                        <th>DateTme</th>
+                        <th>Customer</th>
+                        <th>Phone</th>
+                        <th>Type</th>
+                        <th>Booked By</th>
+                        <th>Confirmed</th>
+                        <th>Notes</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2/8/2022  8:00 AM</td>
+                        <td>WILLIAM RICHEY</td>
+                        <td>-</td>
+                        <td>Service</td>
+                        <td>Admin</td>
+                        <td>NO</td>
+                        <td>-</td>
+
+                        <td>
+                            <div class="d-flex order-sm-0 order-1" style="float:right">
+                                <button type="button" class="btn btn-icon btn-label-primary me-2" data-bs-toggle="modal" data-bs-target="#enableOTP">
+                                    <i class="bx bx-pencil"></i>
+                                </button>
+                                <button type="button" class="btn btn-icon btn-label-danger">
+                                    <i class="bx bx-trash-alt"></i>
+                                </button>
+                            </div>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade" id="enableOTP" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-simple modal-enable-otp modal-dialog-centered">
+            <div class="modal-content p-3 p-md-5">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="text-center mb-4">
+                        <h3 class="mb-5"><i class="bx bx-calendar fa-1x"></i> Appointment</h3>
+                    </div>
+
+                    <form id="enableOTPForm" class="row g-3" onsubmit="return false">
+                        <div class="col-12">
+                            <label class="text-black font-w600 form-label" for="name"><i class="fa fa-user"></i> CUSTOMER NAME </label>
+                            <div class="input-group input-group-merge">
+                                <input type="text" id="name" name="name" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="text-black font-w600 form-label" for="Phone"><i class="fa fa-calendar"></i> DATE</label>
+                            <div class="input-group input-group-merge">
+                                <input type="text" id="Phone" name="Phone" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <label class="text-black font-w600 form-label" for="Address"><i class="fa fa-briefcase"></i> DEALERSHIP</label>
+                            <div class="input-group input-group-merge">
+                                <input type="text" id="Address" name="Address" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-md mb-md-0 mb-2 remove">
+                            <div class="form-check custom-option custom-option-icon">
+                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                    <span class="custom-option-body">
+
+                                        <span class="custom-option-title">CONFIRM</span>
+
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="avatar avatar-sm model">
+                            <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+                        </div>
+                        <div class="col-md mb-md-0 mb-2 remove">
+                            <div class="form-check custom-option custom-option-icon">
+                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                    <span class="custom-option-body">
+
+                                        <span class="custom-option-title">CANCEL</span>
+
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="avatar avatar-sm model">
+                            <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+                        </div>
+                        <div class="col-md mb-md-0 mb-2 remove">
+                            <div class="form-check custom-option custom-option-icon">
+                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                    <span class="custom-option-body">
+
+                                        <span class="custom-option-title">RESCHEDULE</span>
+
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <label class="text-black font-w600 form-label" for="Phone"><i class="fa fa-calendar"></i> DATE</label>
+                            <div class="input-group input-group-merge">
+                                <input type="date" id="Phone" name="Phone" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-12" style="float:right">
+                            <button type="submit" class="btn btn-primary me-sm-3 me-1">Save</button>
+                            <button type="reset" class="btn btn-label-secondary" data-bs-dismiss="modal" aria-label="Close">Search Again</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+
+    $(document).ready(function () {
+        $('#EbayProduct').DataTable({
+            searching: true,
+            "ordering": true,
+
+        });
+
+        $(".nav li").removeClass("active");
+        $('#Appointments').addClass('active');
+    });
+</script>
+
+

@@ -1,0 +1,492 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DigitalAzariModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAccessLevel">
+          <Key>
+            <PropertyRef Name="AccessId" />
+          </Key>
+          <Property Name="AccessId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EditAccess" Type="bit" />
+          <Property Name="DeleteAccess" Type="bit" />
+          <Property Name="CreateAccess" Type="bit" />
+          <Property Name="MenuId" Type="int" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="EditBy" Type="int" />
+          <Property Name="EditDate" Type="datetime" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="isActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblBrand">
+          <Key>
+            <PropertyRef Name="BrandID" />
+          </Key>
+          <Property Name="BrandID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandName" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblDealership">
+          <Key>
+            <PropertyRef Name="DealershipID" />
+          </Key>
+          <Property Name="DealershipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DealershipName" Type="varchar" MaxLength="200" />
+          <Property Name="DealershipType" Type="varchar" MaxLength="100" />
+          <Property Name="DealershipPhone" Type="varchar" MaxLength="50" />
+          <Property Name="DealershipAddress" Type="varchar" MaxLength="500" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblDealershipUser">
+          <Key>
+            <PropertyRef Name="DUID" />
+          </Key>
+          <Property Name="DUID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DealershipID" Type="int" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblMenu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ControllerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ActionName" Type="nvarchar" MaxLength="50" />
+          <Property Name="isParent" Type="bit" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="FontAwesome" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="EditBy" Type="int" />
+          <Property Name="EditDate" Type="datetime" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="isActive" Type="bit" />
+          <Property Name="ElementId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblRole">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="EditBy" Type="int" />
+          <Property Name="EditDate" Type="datetime" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="isActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblSettings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Smtp" Type="varchar" MaxLength="50" />
+          <Property Name="Port" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserEmail" Type="varchar" MaxLength="200" />
+          <Property Name="UserPhone" Type="varchar" MaxLength="100" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" />
+          <Property Name="Gender" Type="char" MaxLength="10" />
+          <Property Name="Password" Type="varchar" MaxLength="500" />
+          <Property Name="RoleID" Type="int" />
+          <Property Name="RoleType" Type="varchar" MaxLength="50" />
+          <Property Name="Department" Type="varchar" MaxLength="50" />
+          <Property Name="SalesActivityH" Type="int" />
+          <Property Name="SalesActivityD" Type="int" />
+          <Property Name="SalesCall" Type="int" />
+          <Property Name="SalesContact" Type="int" />
+          <Property Name="SalesAppt" Type="int" />
+          <Property Name="SeviceActivityH" Type="int" />
+          <Property Name="SeviceActivityD" Type="int" />
+          <Property Name="SeviceCall" Type="int" />
+          <Property Name="SeviceContact" Type="int" />
+          <Property Name="SeviceAppt" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_AccessRole">
+          <End Role="tblRole" Type="Self.tblRole" Multiplicity="0..1" />
+          <End Role="tblAccessLevel" Type="Self.tblAccessLevel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="tblAccessLevel">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAccessLevel_tblMenu">
+          <End Role="tblMenu" Type="Self.tblMenu" Multiplicity="0..1" />
+          <End Role="tblAccessLevel" Type="Self.tblAccessLevel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMenu">
+              <PropertyRef Name="MenuId" />
+            </Principal>
+            <Dependent Role="tblAccessLevel">
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DigitalAzariModelStoreContainer">
+          <EntitySet Name="tblAccessLevel" EntityType="Self.tblAccessLevel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBrand" EntityType="Self.tblBrand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDealership" EntityType="Self.tblDealership" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDealershipUser" EntityType="Self.tblDealershipUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMenu" EntityType="Self.tblMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRole" EntityType="Self.tblRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSettings" EntityType="Self.tblSettings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AccessRole" Association="Self.FK_AccessRole">
+            <End Role="tblRole" EntitySet="tblRole" />
+            <End Role="tblAccessLevel" EntitySet="tblAccessLevel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAccessLevel_tblMenu" Association="Self.FK_tblAccessLevel_tblMenu">
+            <End Role="tblMenu" EntitySet="tblMenu" />
+            <End Role="tblAccessLevel" EntitySet="tblAccessLevel" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DigitalAzariModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblAccessLevel">
+          <Key>
+            <PropertyRef Name="AccessId" />
+          </Key>
+          <Property Name="AccessId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EditAccess" Type="Boolean" />
+          <Property Name="DeleteAccess" Type="Boolean" />
+          <Property Name="CreateAccess" Type="Boolean" />
+          <Property Name="MenuId" Type="Int32" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="EditBy" Type="Int32" />
+          <Property Name="EditDate" Type="DateTime" Precision="3" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="isActive" Type="Boolean" />
+          <NavigationProperty Name="tblRole" Relationship="Self.FK_AccessRole" FromRole="tblAccessLevel" ToRole="tblRole" />
+          <NavigationProperty Name="tblMenu" Relationship="Self.FK_tblAccessLevel_tblMenu" FromRole="tblAccessLevel" ToRole="tblMenu" />
+        </EntityType>
+        <EntityType Name="tblBrand">
+          <Key>
+            <PropertyRef Name="BrandID" />
+          </Key>
+          <Property Name="BrandID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblDealership">
+          <Key>
+            <PropertyRef Name="DealershipID" />
+          </Key>
+          <Property Name="DealershipID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DealershipName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DealershipType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DealershipPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DealershipAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblDealershipUser">
+          <Key>
+            <PropertyRef Name="DUID" />
+          </Key>
+          <Property Name="DUID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DealershipID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblMenu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ControllerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ActionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isParent" Type="Boolean" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="FontAwesome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="EditBy" Type="Int32" />
+          <Property Name="EditDate" Type="DateTime" Precision="3" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="ElementId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblAccessLevels" Relationship="Self.FK_tblAccessLevel_tblMenu" FromRole="tblMenu" ToRole="tblAccessLevel" />
+        </EntityType>
+        <EntityType Name="tblRole">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="EditBy" Type="Int32" />
+          <Property Name="EditDate" Type="DateTime" Precision="3" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="isActive" Type="Boolean" />
+          <NavigationProperty Name="tblAccessLevels" Relationship="Self.FK_AccessRole" FromRole="tblRole" ToRole="tblAccessLevel" />
+        </EntityType>
+        <EntityType Name="tblSetting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Smtp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Port" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UserPhone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="RoleType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SalesActivityH" Type="Int32" />
+          <Property Name="SalesActivityD" Type="Int32" />
+          <Property Name="SalesCall" Type="Int32" />
+          <Property Name="SalesContact" Type="Int32" />
+          <Property Name="SalesAppt" Type="Int32" />
+          <Property Name="SeviceActivityH" Type="Int32" />
+          <Property Name="SeviceActivityD" Type="Int32" />
+          <Property Name="SeviceCall" Type="Int32" />
+          <Property Name="SeviceContact" Type="Int32" />
+          <Property Name="SeviceAppt" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_AccessRole">
+          <End Role="tblRole" Type="Self.tblRole" Multiplicity="0..1" />
+          <End Role="tblAccessLevel" Type="Self.tblAccessLevel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="tblAccessLevel">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAccessLevel_tblMenu">
+          <End Role="tblMenu" Type="Self.tblMenu" Multiplicity="0..1" />
+          <End Role="tblAccessLevel" Type="Self.tblAccessLevel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMenu">
+              <PropertyRef Name="MenuId" />
+            </Principal>
+            <Dependent Role="tblAccessLevel">
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DigitalAzariEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAccessLevels" EntityType="Self.tblAccessLevel" />
+          <EntitySet Name="tblBrands" EntityType="Self.tblBrand" />
+          <EntitySet Name="tblDealerships" EntityType="Self.tblDealership" />
+          <EntitySet Name="tblDealershipUsers" EntityType="Self.tblDealershipUser" />
+          <EntitySet Name="tblMenus" EntityType="Self.tblMenu" />
+          <EntitySet Name="tblRoles" EntityType="Self.tblRole" />
+          <EntitySet Name="tblSettings" EntityType="Self.tblSetting" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+          <AssociationSet Name="FK_AccessRole" Association="Self.FK_AccessRole">
+            <End Role="tblRole" EntitySet="tblRoles" />
+            <End Role="tblAccessLevel" EntitySet="tblAccessLevels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAccessLevel_tblMenu" Association="Self.FK_tblAccessLevel_tblMenu">
+            <End Role="tblMenu" EntitySet="tblMenus" />
+            <End Role="tblAccessLevel" EntitySet="tblAccessLevels" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DigitalAzariModelStoreContainer" CdmEntityContainer="DigitalAzariEntities">
+          <EntitySetMapping Name="tblAccessLevels">
+            <EntityTypeMapping TypeName="DigitalAzariModel.tblAccessLevel">
+              <MappingFragment StoreEntitySet="tblAccessLevel">
+                <ScalarProperty Name="AccessId" ColumnName="AccessId" />
+                <ScalarProperty Name="EditAccess" ColumnName="EditAccess" />
+                <ScalarProperty Name="DeleteAccess" ColumnName="DeleteAccess" />
+                <ScalarProperty Name="CreateAccess" ColumnName="CreateAccess" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="EditBy" ColumnName="EditBy" />
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBrands">
+            <EntityTypeMapping TypeName="DigitalAzariModel.tblBrand">
+              <MappingFragment StoreEntitySet="tblBrand">
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDealerships">
+            <EntityTypeMapping TypeName="DigitalAzariModel.tblDealership">
+              <MappingFragment StoreEntitySet="tblDealership">
+                <ScalarProperty Name="DealershipID" ColumnName="DealershipID" />
+                <ScalarProperty Name="DealershipName" ColumnName="DealershipName" />
+                <ScalarProperty Name="DealershipType" ColumnName="DealershipType" />
+                <ScalarProperty Name="DealershipPhone" ColumnName="DealershipPhone" />
+                <ScalarProperty Name="DealershipAddress" ColumnName="DealershipAddress" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDealershipUsers">
+            <EntityTypeMapping TypeName="DigitalAzariModel.tblDealershipUser">
+              <MappingFragment StoreEntitySet="tblDealershipUser">
+                <ScalarProperty Name="DUID" ColumnName="DUID" />
+                <ScalarProperty Name="DealershipID" ColumnName="DealershipID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMenus">
+            <EntityTypeMapping TypeName="DigitalAzariModel.tblMenu">
+              <MappingFragment StoreEntitySet="tblMenu">
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+                <ScalarProperty Name="isParent" ColumnName="isParent" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="FontAwesome" ColumnName="FontAwesome" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="EditBy" ColumnName="EditBy" />
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="ElementId" ColumnName="ElementId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRoles">
+            <EntityTypeMapping TypeName="DigitalAzariModel.tblRole">
+              <MappingFragment StoreEntitySet="tblRole">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="EditBy" ColumnName="EditBy" />
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSettings">
+            <EntityTypeMapping TypeName="DigitalAzariModel.tblSetting">
+              <MappingFragment StoreEntitySet="tblSettings">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Smtp" ColumnName="Smtp" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="DigitalAzariModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleType" ColumnName="RoleType" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="SalesActivityH" ColumnName="SalesActivityH" />
+                <ScalarProperty Name="SalesActivityD" ColumnName="SalesActivityD" />
+                <ScalarProperty Name="SalesCall" ColumnName="SalesCall" />
+                <ScalarProperty Name="SalesContact" ColumnName="SalesContact" />
+                <ScalarProperty Name="SalesAppt" ColumnName="SalesAppt" />
+                <ScalarProperty Name="SeviceActivityH" ColumnName="SeviceActivityH" />
+                <ScalarProperty Name="SeviceActivityD" ColumnName="SeviceActivityD" />
+                <ScalarProperty Name="SeviceCall" ColumnName="SeviceCall" />
+                <ScalarProperty Name="SeviceContact" ColumnName="SeviceContact" />
+                <ScalarProperty Name="SeviceAppt" ColumnName="SeviceAppt" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

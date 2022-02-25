@@ -1,0 +1,216 @@
+﻿@using DigitalAzariBDC.Models;
+@{
+
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<tblBrand> list = (List<tblBrand>)ViewBag.brandlist;
+}
+<head>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    @*<script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>*@
+    @*<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>*@
+
+
+    <style>
+        .btn {
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.5rem;
+            font-weight: 400;
+            font-size: 1rem;
+        }
+        .alert {
+             border-radius: 0.25rem; 
+            padding: 1rem 1.5rem;
+            width:50%;
+        }
+    </style>
+</head>
+<div class="container-fluid">
+
+
+
+    <div class="card">
+
+        <div class="row">
+            <div class="col-md-6"> <h5 class="card-header">BRANDS</h5></div>
+
+            <div class="col-md-6"> <a class="text-right" style="float:right;margin-right:1%"><button data-bs-toggle="modal" data-bs-target="#edit_brand_details" style="margin-top:2%; " type="button" class="open-AddBookDialog text-right btn btn-primary"><i class="fa fa-plus"></i> Add New Brand</button></a></div>
+        </div>
+        @if (ViewBag.Createmessage != null)
+        {
+    <div class="alert alert-success alert-dismissible fade show" role="alert" id="LinkCopy">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="me-2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+
+        @ViewBag.Createmessage
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </button>
+    </div>
+        }
+        @if (ViewBag.Deletemessage != null)
+        {
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="LinkCopy">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="me-2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+
+        @ViewBag.Deletemessage
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </button>
+    </div>
+        }
+        @if (ViewBag.updatemessage != null)
+        {
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" id="LinkCopy">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="me-2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        @ViewBag.updatemessage
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </button>
+    </div>
+        }
+        <div class="card-body table-responsive">
+            <table class="display dataTable" id="Dealership">
+                <thead>
+                    <tr>
+                        <th hidden>BrandID</th>
+                        <th>Brand</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in list)
+                    {
+                    <tr>
+                        <td class="BrandID" hidden>@item.BrandID</td>
+                        <td class="BrandName">@item.BrandName</td>
+                        <td>
+                            <div class="d-flex">
+                                <a href="#" class="btn btn-primary shadow btn-sm sharp me-1 open-AddBookDialog" data-bs-toggle="modal" data-bs-target="#edit_brand_details"><i class="fa fa-pen"></i></a>
+                                <a href="#" class="btn btn-danger shadow btn-sm sharp open-AddBookDialog1" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="fa fa-trash"></i></a>
+                            </div>
+                            @*<div class="d-flex order-sm-0 order-1" style="float:right">
+
+                                <button type="button" class="open-AddBookDialog btn btn-icon btn-primary me-2" data-bs-toggle="modal" data-bs-target="#edit_brand_details">
+                                    <i class="bx bx-pencil"></i>
+                                </button>
+                                <button type="button" class="open-AddBookDialog1 btn btn-icon btn-danger" data-bs-toggle="modal" data-bs-target="#delete_modal">
+                                    <i class="bx bx-trash-alt"></i>
+                                </button>
+                            </div>*@
+
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+
+    <div class="modal fade" id="edit_brand_details" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-simple modal-enable-otp modal-dialog-centered">
+            <div class="modal-content p-3 p-md-3">
+                <div class="modal-header" style="background-color:#5F3A81;">
+
+                    <h3 class="modal-title" style="color: white"><i class="fa fa-briefcase"></i> Brand</h3>
+
+
+
+                </div>
+                @using (Html.BeginForm("Create", "Brand", FormMethod.Post))
+                    {
+                <form class="row g-3">
+                    <div class="modal-body">
+
+
+
+                        <input type="text" id="BrandID" name="BrandID" class="form-control" hidden />
+                        <div class="col-12">
+                            <label class="text-black font-w600 form-label" for="name"><i class="fa fa-briefcase"></i> Brand NAME </label>
+                            <div class="input-group input-group-merge">
+
+                                <input type="text" id="BrandName" name="BrandName" class="form-control" required />
+                            </div>
+                        </div>
+                        <br>
+
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="reset" class="btn btn-danger light" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+                        <button type="submit" class="btn btn-primary me-sm-3 me-1">Submit</button>
+                    </div>
+                </form>
+                    }
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="delete_modal" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <!--	<div class="modal-header">
+                        <h5 class="modal-title">Delete</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>-->
+                <div class="modal-body text-center">
+                    @using (Html.BeginForm("Delete", "Brand", FormMethod.Post))
+                    {@Html.AntiForgeryToken()
+                    <div class="form-content p-2">
+                        <input type="text" id="BrandID" name="BrandID" class="form-control" hidden />
+                        <h4 class="modal-title"><i class="fa fa-trash" style="color:red"></i> Delete</h4>
+                        <p class="mb-4">Are you sure want to delete?</p>
+                        <button type="submit" class="btn btn-primary">Save </button>
+                        <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
+                    </div>
+                }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/assets/js/jquery-3.2.1.min.js"></script>
+<script>
+    $(document).on("click", ".open-AddBookDialog1", function () {
+        var myModal = $('#delete_modal');
+        var id = $(this).closest('tr').find('.BrandID').text();
+        $("#BrandID", myModal).val(id);
+        myModal.show();
+    });
+</script>
+
+<script>
+    $(document).on("click", ".open-AddBookDialog", function () {
+       
+        var myModal = $('#edit_brand_details');
+        var id = $(this).closest('tr').find('.BrandID').text();      
+        var BrandName = $(this).closest('tr').find('.BrandName').text();       
+        $("#BrandID", myModal).val(id);
+        $("#BrandName", myModal).val(BrandName);
+       
+        myModal.show();
+
+    });
+</script>
+<script>
+
+    $(document).ready(function () {
+        $('#Dealership').DataTable({
+            searching: true,
+            "ordering": true,
+
+        });
+        $(".nav li").removeClass("active");
+        $('#Brands').addClass('active');
+    });
+</script>

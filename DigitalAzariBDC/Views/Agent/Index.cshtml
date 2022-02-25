@@ -1,0 +1,2828 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    @*<script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>*@
+    <style>
+
+        /*ui.tiny.buttons .or {
+            font-size: .85714286rem;
+        }
+
+        .ui.buttons {
+            margin-right: 1px;
+            font-size: .85714286rem;
+            background-color: #c9bfd6;
+            border: 0;*/
+        /* border-radius: 50px; */
+        /*color: #fff;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 20px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: inline-block;
+            min-height: 1em;
+            outline: 0;
+            border: none;
+            vertical-align: baseline;
+            background: #e0e1e2 none;
+            color: rgba(0,0,0,.6);
+            font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+            margin: 0 0.25em 0 0;
+            padding: 0.78571429em 1.5em 0.78571429em;
+            text-transform: none;
+            text-shadow: none;
+            font-weight: 700;
+            line-height: 1em;
+            font-style: normal;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 0.28571429rem;
+            -webkit-box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgb(34 36 38 / 15%) inset;
+            box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgb(34 36 38 / 15%) inset;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-transition: opacity .1s ease,background-color .1s ease,color .1s ease,background .1s ease,-webkit-box-shadow .1s ease;
+            transition: opacity .1s ease,background-color .1s ease,color .1s ease,background .1s ease,-webkit-box-shadow .1s ease;
+            transition: opacity .1s ease,background-color .1s ease,color .1s ease,box-shadow .1s ease,background .1s ease;
+            transition: opacity .1s ease,background-color .1s ease,color .1s ease,box-shadow .1s ease,background .1s ease,-webkit-box-shadow .1s ease;
+
+
+        }
+
+        .ui.buttons .or {
+            height: 2.8em;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .ui.buttons .or {
+            position: relative;
+            width: 0.3em;
+            height: 2.57142857em;
+            z-index: 3;
+        }*/
+
+        .dct-border-rht {
+            border-right: 1px solid #f0f0f0;
+        }
+
+        .dash-widget {
+            /* -webkit-box-align: center; */
+            -ms-flex-align: center;
+            /* align-items: center; */
+            /* display: -webkit-box; */
+            display: -ms-flexbox;
+            display: flex;
+        }
+
+        .circle-bar {
+            margin-right: 15px;
+        }
+
+            .circle-bar > div {
+                display: inline-block;
+                position: relative;
+                text-align: center;
+            }
+
+                .circle-bar > div canvas {
+                    width: 90px !important;
+                    height: 90px !important;
+                }
+
+        .btn-group > .btn, .btn-group-vertical > .btn {
+            position: unset !important;
+            flex: auto;
+        }
+
+        .circle-bar > div i {
+            left: 0;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            text-align: center;
+            margin: 0 auto;
+            transform: translateY(-50%);
+        }
+
+        .pad {
+            padding-right: calc(var(--bs-gutter-x)*.2) !important;
+            padding-left: calc(var(--bs-gutter-x)*.2) !important;
+        }
+
+        .bad {
+            transform: translate(125%, 6%);
+            float: right;
+        }
+
+        .bad1 {
+            transform: translate(-123%, 6%);
+            float: left;
+        }
+
+        .bad3 {
+            transform: translate(-127%, 6%);
+            float: left;
+        }
+
+        .bad2 {
+            transform: translate(-123%, 6%);
+            float: left;
+        }
+
+        .badge {
+            /* display: inline-block; */
+            padding: 0.52em 0.593em;
+            font-size: 0.8125em;
+            font-weight: 500;
+            line-height: 1;
+            color: #fff;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 1.25rem !important;
+            text-transform: none !important;
+        }
+
+        .centerbad {
+            background-color: #e7e7ff;
+            border: 0px !important;
+        }
+
+        .leftbad {
+            margin-left: 1% !important;
+            background-color: #e7e7ff;
+            border: 0px !important;
+        }
+
+        .rightbad {
+            margin-right: 5px !important;
+            background-color: #e7e7ff;
+            border: 0px !important;
+        }
+
+
+        .custom-option-icon .custom-option-content {
+            text-align: center;
+            padding: 0.5em !important;
+        }
+
+        .avatar-sm {
+            width: 1.5rem;
+            height: 1.5rem;
+            padding-left: 0;
+            /* //border: 1px solid #d9dee3;*/
+            border-radius: 0rem;
+            margin-top: 8px;
+        }
+
+        .model {
+            margin-top: 23px;
+        }
+
+        .custom-option-icon .custom-option-body {
+            display: block;
+            margin-bottom: 0rem;
+        }
+
+        .custom-option-title {
+            /* // color:white !important;*/
+        }
+
+        .avatar {
+            background-color: #e7e7ff;
+        }
+
+        .custom-option {
+            padding-left: 0;
+            border: 0px;
+            border-radius: 0rem;
+        }
+
+        .remove {
+            text-transform: uppercase;
+            background-color: #e7e7ff;
+            flex-shrink: 0;
+            width: 100%;
+            max-width: 100%;
+            padding-right: 0rem;
+            padding-left: 0rem;
+            margin-top: var(--bs-gutter-y);
+        }
+
+            .remove:hover {
+                background-color: #696cff;
+            }
+
+        .remove1:hover {
+            background-color: #696cff;
+        }
+
+        .remove2:hover {
+            background-color: #696cff;
+        }
+
+        .remove3:hover {
+            background-color: #696cff;
+        }
+
+        .remove2 {
+            text-transform: uppercase;
+            background-color: #e7e7ff;
+            flex-shrink: 0;
+            width: 100%;
+            max-width: 100%;
+            padding-right: 1rem;
+            padding-left: 0rem;
+            margin-top: var(--bs-gutter-y);
+            margin-right: 2%;
+        }
+
+        .remove1 {
+            text-transform: uppercase;
+            margin-left: 2%;
+            background-color: #e7e7ff;
+            flex-shrink: 0;
+            width: 100%;
+            max-width: 100%;
+            padding-right: 0rem;
+            padding-left: 1rem;
+            margin-top: var(--bs-gutter-y);
+        }
+
+        .remove3 {
+            text-transform: uppercase;
+            margin-right: 1%;
+            background-color: #e7e7ff;
+            flex-shrink: 0;
+            width: 100%;
+            max-width: 100%;
+            padding-right: 0rem;
+            padding-left: 0rem;
+            margin-top: var(--bs-gutter-y);
+        }
+        .nav-pills .nav-link {
+            border-radius: 0.75rem;
+            padding: 0.75rem 1.25rem;
+        }
+        .btn {
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.5rem;
+            font-weight: 400;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<div class="container-xxl flex-grow-1 container-p-y">
+    @*<div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-3">
+                            <div class="dash-widget dct-border-rht">
+                                <div class="circle-bar circle-bar1">
+                                    <div class="circle-graph1" data-percent="75">
+                                        <canvas width="500" height="500" style="height: 400px; width: 400px;"></canvas>
+                                        <i class="fa fa-heartbeat" style="color:rgb(117, 180, 50)"></i>
+                                    </div>
+                                </div>
+                                <div class="dash-widget-info">
+                                    <h6> ACTIVITIES</h6>
+                                    <h3>1500</h3>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-lg-3">
+                            <div class="dash-widget dct-border-rht">
+                                <div class="circle-bar circle-bar2">
+                                    <div class="circle-graph2" data-percent="65">
+                                        <canvas width="500" height="500" style="height: 400px; width: 400px;"></canvas>
+                                        <img src="assets/img/icon-02.png" class="img-fluid" alt="Patient">
+                                    </div>
+                                </div>
+                                <div class="dash-widget-info">
+                                    <h6><i class="fa fa-dollar-sign" style="color:rgb(7, 135, 234)"></i> CALLS</h6>
+                                    <h3>160</h3>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-lg-3">
+                            <div class="dash-widget">
+                                <div class="circle-bar circle-bar3">
+                                    <div class="circle-graph3" data-percent="50">
+                                        <canvas width="500" height="500" style="height: 400px; width: 400px;"></canvas>
+                                        <img src="assets/img/icon-03.png" class="img-fluid" alt="Patient">
+                                    </div>
+                                </div>
+                                <div class="dash-widget-info">
+                                    <h6><i class="fa fa-dollar-sign" style="color:rgb(0, 171, 197)"></i> CONTACTS</h6>
+                                    <h3>85</h3>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-3">
+                            <div class="dash-widget">
+                                <div class="circle-bar circle-bar1">
+                                    <div class="circle-graph3" data-percent="50">
+                                        <canvas width="500" height="500" style="height: 400px; width: 400px;"></canvas>
+                                        <img src="assets/img/icon-03.png" class="img-fluid" alt="Patient">
+                                    </div>
+                                </div>
+                                <div class="dash-widget-info">
+                                    <h6><i class="fa fa-calendar-alt" style="color:rgb(0, 0, 128)"></i> APPTS.</h6>
+                                    <h3>85</h3>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>*@
+
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-3 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row" style=" text-align: center; ">
+
+                        <h4 class="card-title mb-4"><i class="fa fa-heartbeat" style="color:rgb(117, 180, 50)"></i> ACTIVITIES</h4>
+                        <div class="" style=" text-align: center; ">
+                            <span class="donut" data-peity="{ &quot;fill&quot;: [&quot;rgb(117, 180, 50)&quot;, &quot;rgba(117, 180, 50, .5)&quot;]}" style="display: none;">5/8</span><svg class="peity" height="100" width="100"><path d="M 50 0 A 50 50 0 1 1 14.64466094067263 85.35533905932738 L 32.32233047033631 67.67766952966369 A 25 25 0 1 0 50 25" data-value="5" fill="rgb(117, 180, 50)"></path><path d="M 14.64466094067263 85.35533905932738 A 50 50 0 0 1 49.99999999999999 0 L 49.99999999999999 25 A 25 25 0 0 0 32.32233047033631 67.67766952966369" data-value="3" fill="rgba(117, 180, 50, .5)"></path></svg>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-3 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row" style=" text-align: center; ">
+
+                        <h4 class="card-title mb-4"><i class="fa fa-dollar-sign" style="color:rgb(7, 135, 234)"></i> CALLS</h4>
+                        <div class="" style=" text-align: center; ">
+                            <span class="donut" data-peity="{ &quot;fill&quot;: [&quot;rgb(7, 135, 234)&quot;, &quot;rgba(7, 135, 234, .5)&quot;]}" style="display: none;">250/650</span><svg class="peity" height="100" width="100"><path d="M 50 0 A 50 50 0 0 1 83.15613291203975 87.42553740855506 L 66.57806645601988 68.71276870427752 A 25 25 0 0 0 50 25" data-value="250" fill="rgb(7, 135, 234)"></path><path d="M 83.15613291203975 87.42553740855506 A 50 50 0 1 1 49.99999999999999 0 L 49.99999999999999 25 A 25 25 0 1 0 66.57806645601988 68.71276870427752" data-value="400" fill="rgba(7, 135, 234, .5)"></path></svg>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-3 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row" style=" text-align: center; ">
+
+                        <h4 class="card-title mb-4"><i class="fa fa-dollar-sign" style="color:rgb(0, 171, 197)"></i> CONTACTS</h4>
+                        <div class="" style=" text-align: center; ">
+                            <span class="donut" data-peity="{ &quot;fill&quot;: [&quot;rgb(0, 171, 197)&quot;, &quot;rgba(0, 171, 197, .5)&quot;]}" style="display: none;">0.52/1.561</span><svg class="peity" height="100" width="100"><path d="M 50 0 A 50 50 0 0 1 93.33477372698853 74.94188016230342 L 71.66738686349427 62.47094008115171 A 25 25 0 0 0 50 25" data-value="0.52" fill="rgb(0, 171, 197)"></path><path d="M 93.33477372698853 74.94188016230342 A 50 50 0 1 1 49.99999999999999 0 L 49.99999999999999 25 A 25 25 0 1 0 71.66738686349427 62.47094008115171" data-value="1.041" fill="rgba(0, 171, 197, .5)"></path></svg>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-3 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row" style=" text-align: center; ">
+
+                        <h4 class="card-title mb-4"><i class="fa fa-calendar-alt" style="color:rgb(0, 0, 128)"></i> APPTS.</h4>
+                        <div class="" style=" text-align: center; ">
+                            <span class="donut" data-peity="{ &quot;fill&quot;: [&quot;rgb(0, 0, 128)&quot;, &quot;rgba(0, 0, 128, .5)&quot;]}" style="display: none;">226,134</span><svg class="peity" height="100" width="100"><path d="M 50 0 A 50 50 0 1 1 14.033009983067451 84.73291852294987 L 32.01650499153372 67.36645926147494 A 25 25 0 1 0 50 25" data-value="226" fill="rgb(0, 0, 128)"></path><path d="M 14.033009983067451 84.73291852294987 A 50 50 0 0 1 49.99999999999999 0 L 49.99999999999999 25 A 25 25 0 0 0 32.01650499153372 67.36645926147494" data-value="134" fill="rgba(0, 0, 128, .5)"></path></svg>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+    @*<div class="card-body pb-0">
+            <span class="d-block fw-semibold">ACTIVITIES</span>
+        </div>
+        <div id="expensesChart" class="mb-2" style="min-height: 61px;"><div id="apexchartshjh1eqvi" class="apexcharts-canvas apexchartshjh1eqvi apexcharts-theme-light" style="width: 179px; height: 61px;"><svg id="SvgjsSvg1832" width="179" height="61" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;"><g id="SvgjsG1834" class="apexcharts-inner apexcharts-graphical" transform="translate(14.5, -10)"><defs id="SvgjsDefs1833"><clipPath id="gridRectMaskhjh1eqvi"><rect id="SvgjsRect1836" width="156" height="142" x="-3" y="-1" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="forecastMaskhjh1eqvi"></clipPath><clipPath id="nonForecastMaskhjh1eqvi"></clipPath><clipPath id="gridRectMarkerMaskhjh1eqvi"><rect id="SvgjsRect1837" width="154" height="144" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath></defs><g id="SvgjsG1838" class="apexcharts-radialbar"><g id="SvgjsG1839"><g id="SvgjsG1840" class="apexcharts-tracks"><g id="SvgjsG1841" class="apexcharts-radialbar-track apexcharts-track" rel="1"><path id="apexcharts-radialbarTrack-0" d="M 27.25609756097561 70 A 47.74390243902439 47.74390243902439 0 0 1 122.7439024390244 70" fill="none" fill-opacity="1" stroke="rgba(242,242,242,0.85)" stroke-opacity="1" stroke-linecap="round" stroke-width="10.05487804878049" stroke-dasharray="0" class="apexcharts-radialbar-area" data:pathOrig="M 27.25609756097561 70 A 47.74390243902439 47.74390243902439 0 0 1 122.7439024390244 70"></path></g></g><g id="SvgjsG1843"><g id="SvgjsG1847" class="apexcharts-series apexcharts-radial-series" seriesName="Progress" rel="1" data:realIndex="0"><path id="SvgjsPath1848" d="M 27.25609756097561 70 A 47.74390243902439 47.74390243902439 0 0 1 111.57395115622926 39.31081107411218" fill="none" fill-opacity="0.85" stroke="rgba(105,108,255,0.85)" stroke-opacity="1" stroke-linecap="round" stroke-width="10.365853658536587" stroke-dasharray="0" class="apexcharts-radialbar-area apexcharts-radialbar-slice-0" data:angle="140" data:value="78" index="0" j="0" data:pathOrig="M 27.25609756097561 70 A 47.74390243902439 47.74390243902439 0 0 1 111.57395115622926 39.31081107411218"></path></g><circle id="SvgjsCircle1844" r="37.71646341463414" cx="75" cy="70" class="apexcharts-radialbar-hollow" fill="transparent"></circle><g id="SvgjsG1845" class="apexcharts-datalabels-group" transform="translate(0, 0) scale(1)" style="opacity: 1;"><text id="SvgjsText1846" font-family="Helvetica, Arial, sans-serif" x="75" y="70" text-anchor="middle" dominant-baseline="auto" font-size="22px" font-weight="500" fill="#566a7f" class="apexcharts-text apexcharts-datalabel-value" style="font-family: Helvetica, Arial, sans-serif;">78%</text></g></g></g></g><line id="SvgjsLine1849" x1="0" y1="0" x2="150" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1850" x1="0" y1="0" x2="150" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line></g><g id="SvgjsG1835" class="apexcharts-annotations"></g></svg><div class="apexcharts-legend"></div></div></div>
+        <div class="p-3 pt-2">
+            <small class="text-muted d-block text-center">$21k Expenses more than last month</small>
+        </div>
+        <div class="resize-triggers"><div class="expand-trigger"><div style="width: 180px; height: 180px;"></div></div><div class="contract-trigger"></div></div>*@
+
+    @*<div class="col-lg-3 col-md-3 col-3 mb-4">
+            <div class="card">
+                <div class="card-body pb-0">
+                    <span class="d-block fw-semibold">CALLS</span>
+                </div>
+                <div class="chart-progress" data-color="danger" data-series="20" style="min-height: 100.7px;"><div id="" class="apexcharts-canvas apexchartsch6257ec apexcharts-theme-light" style="width: 45px; height: 100.7px;"><svg id="SvgjsSvg1687" width="45" height="100.7" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;"><g id="SvgjsG1689" class="apexcharts-inner apexcharts-graphical" transform="translate(-5, -15)"><defs id="SvgjsDefs1688"><clipPath id="gridRectMaskch6257ec"><rect id="SvgjsRect1691" width="71" height="77" x="-3" y="-1" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="forecastMaskch6257ec"></clipPath><clipPath id="nonForecastMaskch6257ec"></clipPath><clipPath id="gridRectMarkerMaskch6257ec"><rect id="SvgjsRect1692" width="69" height="79" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath></defs><g id="SvgjsG1693" class="apexcharts-radialbar"><g id="SvgjsG1694"><g id="SvgjsG1695" class="apexcharts-tracks"><g id="SvgjsG1696" class="apexcharts-radialbar-track apexcharts-track" rel="1"><path id="apexcharts-radialbarTrack-0" d="M 32.5 18.753048780487802 A 13.746951219512198 13.746951219512198 0 1 1 32.49760070440326 18.75304898986584" fill="none" fill-opacity="1" stroke="#8897aa1a" stroke-opacity="1" stroke-linecap="butt" stroke-width="4.501036585365854" stroke-dasharray="0" class="apexcharts-radialbar-area" data:pathOrig="M 32.5 18.753048780487802 A 13.746951219512198 13.746951219512198 0 1 1 32.49760070440326 18.75304898986584"></path></g></g><g id="SvgjsG1698"><g id="SvgjsG1700" class="apexcharts-series apexcharts-radial-series" seriesName="Progress" rel="1" data:realIndex="0"><path id="SvgjsPath1701" d="M 32.5 18.753048780487802 A 13.746951219512198 13.746951219512198 0 1 1 21.378482842571223 24.419744809186703" fill="none" fill-opacity="0.85" stroke="rgba(255,62,29,0.85)" stroke-opacity="1" stroke-linecap="butt" stroke-width="4.640243902439025" stroke-dasharray="0" class="apexcharts-radialbar-area apexcharts-radialbar-slice-0" data:angle="306" data:value="85" index="0" j="0" data:pathOrig="M 32.5 18.753048780487802 A 13.746951219512198 13.746951219512198 0 1 1 21.378482842571223 24.419744809186703"></path></g><circle id="SvgjsCircle1699" r="6.4964329268292715" cx="32.5" cy="32.5" class="apexcharts-radialbar-hollow" fill="transparent"></circle></g></g></g><line id="SvgjsLine1702" x1="0" y1="0" x2="65" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1703" x1="0" y1="0" x2="65" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line></g><g id="SvgjsG1690" class="apexcharts-annotations"></g></svg><div class="apexcharts-legend"></div></div></div> </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-3 mb-4">
+            <div class="card">
+                <div class="card-body pb-0">
+                    <span class="d-block fw-semibold">CONTACTS</span>
+                </div>
+                <div id="expensesChart" class="mb-2" style="min-height: 61px;"><div id="apexchartshjh1eqvi" class="apexcharts-canvas apexchartshjh1eqvi apexcharts-theme-light" style="width: 179px; height: 61px;"><svg id="SvgjsSvg1832" width="179" height="61" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;"><g id="SvgjsG1834" class="apexcharts-inner apexcharts-graphical" transform="translate(14.5, -10)"><defs id="SvgjsDefs1833"><clipPath id="gridRectMaskhjh1eqvi"><rect id="SvgjsRect1836" width="156" height="142" x="-3" y="-1" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="forecastMaskhjh1eqvi"></clipPath><clipPath id="nonForecastMaskhjh1eqvi"></clipPath><clipPath id="gridRectMarkerMaskhjh1eqvi"><rect id="SvgjsRect1837" width="154" height="144" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath></defs><g id="SvgjsG1838" class="apexcharts-radialbar"><g id="SvgjsG1839"><g id="SvgjsG1840" class="apexcharts-tracks"><g id="SvgjsG1841" class="apexcharts-radialbar-track apexcharts-track" rel="1"><path id="apexcharts-radialbarTrack-0" d="M 27.25609756097561 70 A 47.74390243902439 47.74390243902439 0 0 1 122.7439024390244 70" fill="none" fill-opacity="1" stroke="rgba(242,242,242,0.85)" stroke-opacity="1" stroke-linecap="round" stroke-width="10.05487804878049" stroke-dasharray="0" class="apexcharts-radialbar-area" data:pathOrig="M 27.25609756097561 70 A 47.74390243902439 47.74390243902439 0 0 1 122.7439024390244 70"></path></g></g><g id="SvgjsG1843"><g id="SvgjsG1847" class="apexcharts-series apexcharts-radial-series" seriesName="Progress" rel="1" data:realIndex="0"><path id="SvgjsPath1848" d="M 27.25609756097561 70 A 47.74390243902439 47.74390243902439 0 0 1 111.57395115622926 39.31081107411218" fill="none" fill-opacity="0.85" stroke="rgba(105,108,255,0.85)" stroke-opacity="1" stroke-linecap="round" stroke-width="10.365853658536587" stroke-dasharray="0" class="apexcharts-radialbar-area apexcharts-radialbar-slice-0" data:angle="140" data:value="78" index="0" j="0" data:pathOrig="M 27.25609756097561 70 A 47.74390243902439 47.74390243902439 0 0 1 111.57395115622926 39.31081107411218"></path></g><circle id="SvgjsCircle1844" r="37.71646341463414" cx="75" cy="70" class="apexcharts-radialbar-hollow" fill="transparent"></circle><g id="SvgjsG1845" class="apexcharts-datalabels-group" transform="translate(0, 0) scale(1)" style="opacity: 1;"><text id="SvgjsText1846" font-family="Helvetica, Arial, sans-serif" x="75" y="70" text-anchor="middle" dominant-baseline="auto" font-size="22px" font-weight="500" fill="#566a7f" class="apexcharts-text apexcharts-datalabel-value" style="font-family: Helvetica, Arial, sans-serif;">78%</text></g></g></g></g><line id="SvgjsLine1849" x1="0" y1="0" x2="150" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1850" x1="0" y1="0" x2="150" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line></g><g id="SvgjsG1835" class="apexcharts-annotations"></g></svg><div class="apexcharts-legend"></div></div></div>
+                <div class="p-3 pt-2">
+                    <small class="text-muted d-block text-center">$21k Expenses more than last month</small>
+                </div>
+                <div class="resize-triggers"><div class="expand-trigger"><div style="width: 180px; height: 180px;"></div></div><div class="contract-trigger"></div></div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-3 mb-4">
+            <div class="card">
+                <div class="card-body pb-0">
+                    <span class="d-block fw-semibold">APPTS.</span>
+                </div>
+                <div id="expensesChart" class="mb-2" style="min-height: 61px;"><div id="apexchartshjh1eqvi" class="apexcharts-canvas apexchartshjh1eqvi apexcharts-theme-light" style="width: 179px; height: 61px;"><svg id="SvgjsSvg1832" width="179" height="61" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;"><g id="SvgjsG1834" class="apexcharts-inner apexcharts-graphical" transform="translate(14.5, -10)"><defs id="SvgjsDefs1833"><clipPath id="gridRectMaskhjh1eqvi"><rect id="SvgjsRect1836" width="156" height="142" x="-3" y="-1" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="forecastMaskhjh1eqvi"></clipPath><clipPath id="nonForecastMaskhjh1eqvi"></clipPath><clipPath id="gridRectMarkerMaskhjh1eqvi"><rect id="SvgjsRect1837" width="154" height="144" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath></defs><g id="SvgjsG1838" class="apexcharts-radialbar"><g id="SvgjsG1839"><g id="SvgjsG1840" class="apexcharts-tracks"><g id="SvgjsG1841" class="apexcharts-radialbar-track apexcharts-track" rel="1"><path id="apexcharts-radialbarTrack-0" d="M 27.25609756097561 70 A 47.74390243902439 47.74390243902439 0 0 1 122.7439024390244 70" fill="none" fill-opacity="1" stroke="rgba(242,242,242,0.85)" stroke-opacity="1" stroke-linecap="round" stroke-width="10.05487804878049" stroke-dasharray="0" class="apexcharts-radialbar-area" data:pathOrig="M 27.25609756097561 70 A 47.74390243902439 47.74390243902439 0 0 1 122.7439024390244 70"></path></g></g><g id="SvgjsG1843"><g id="SvgjsG1847" class="apexcharts-series apexcharts-radial-series" seriesName="Progress" rel="1" data:realIndex="0"><path id="SvgjsPath1848" d="M 27.25609756097561 70 A 47.74390243902439 47.74390243902439 0 0 1 111.57395115622926 39.31081107411218" fill="none" fill-opacity="0.85" stroke="rgba(105,108,255,0.85)" stroke-opacity="1" stroke-linecap="round" stroke-width="10.365853658536587" stroke-dasharray="0" class="apexcharts-radialbar-area apexcharts-radialbar-slice-0" data:angle="140" data:value="78" index="0" j="0" data:pathOrig="M 27.25609756097561 70 A 47.74390243902439 47.74390243902439 0 0 1 111.57395115622926 39.31081107411218"></path></g><circle id="SvgjsCircle1844" r="37.71646341463414" cx="75" cy="70" class="apexcharts-radialbar-hollow" fill="transparent"></circle><g id="SvgjsG1845" class="apexcharts-datalabels-group" transform="translate(0, 0) scale(1)" style="opacity: 1;"><text id="SvgjsText1846" font-family="Helvetica, Arial, sans-serif" x="75" y="70" text-anchor="middle" dominant-baseline="auto" font-size="22px" font-weight="500" fill="#566a7f" class="apexcharts-text apexcharts-datalabel-value" style="font-family: Helvetica, Arial, sans-serif;">78%</text></g></g></g></g><line id="SvgjsLine1849" x1="0" y1="0" x2="150" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1850" x1="0" y1="0" x2="150" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line></g><g id="SvgjsG1835" class="apexcharts-annotations"></g></svg><div class="apexcharts-legend"></div></div></div>
+                <div class="p-3 pt-2">
+                    <small class="text-muted d-block text-center">$21k Expenses more than last month</small>
+                </div>
+                <div class="resize-triggers"><div class="expand-trigger"><div style="width: 180px; height: 180px;"></div></div><div class="contract-trigger"></div></div>
+            </div>
+        </div>*@
+
+    <div class="card mb-4">
+
+        <div class="card-body">
+            @*<div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-6 mb-4">
+                                        <div class="card">
+                                            <div class="card-body pb-0">
+                                                <span class="d-block fw-semibold mb-2 text-center">Activities</span>
+                                            </div>
+
+                                            <div id="expensesChart" class="mb-2" style="min-height: 91.8333px;"><div id="apexchartsg4bvce03" class="apexcharts-canvas apexchartsg4bvce03 apexcharts-theme-light" style="width: 218px; height: 91.8333px;"><svg id="SvgjsSvg1897" width="218" height="91.83333333333334" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;"><g id="SvgjsG1899" class="apexcharts-inner apexcharts-graphical" transform="translate(8.166666666666657, 0)"><defs id="SvgjsDefs1898"><clipPath id="gridRectMaskg4bvce03"><rect id="SvgjsRect1901" width="207.66666666666669" height="183.66666666666669" x="-3" y="-1" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="forecastMaskg4bvce03"></clipPath><clipPath id="nonForecastMaskg4bvce03"></clipPath><clipPath id="gridRectMarkerMaskg4bvce03"><rect id="SvgjsRect1902" width="205.66666666666669" height="185.66666666666669" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath></defs><g id="SvgjsG1903" class="apexcharts-radialbar"><g id="SvgjsG1904"><g id="SvgjsG1905" class="apexcharts-tracks"><g id="SvgjsG1906" class="apexcharts-radialbar-track apexcharts-track" rel="1"><path id="apexcharts-radialbarTrack-0" d="M 32.977642276422756 90.83333333333333 A 67.85569105691059 67.85569105691059 0 0 1 168.68902439024393 90.83333333333334" fill="none" fill-opacity="1" stroke="rgba(242,242,242,0.85)" stroke-opacity="1" stroke-linecap="round" stroke-width="10.19288617886179" stroke-dasharray="0" class="apexcharts-radialbar-area" data:pathOrig="M 32.977642276422756 90.83333333333333 A 67.85569105691059 67.85569105691059 0 0 1 168.68902439024393 90.83333333333334"></path></g></g><g id="SvgjsG1908"><g id="SvgjsG1912" class="apexcharts-series apexcharts-radial-series" seriesName="Progress" rel="1" data:realIndex="0"><path id="SvgjsPath1913" d="M 32.977642276422756 90.83333333333333 A 67.85569105691059 67.85569105691059 0 0 1 152.81380840147784 47.21653587523351" fill="none" fill-opacity="0.78" stroke="#71dd37" stroke-opacity="1" stroke-linecap="round" stroke-width="10.508130081300816" stroke-dasharray="0" class="apexcharts-radialbar-area apexcharts-radialbar-slice-0" data:angle="140" data:value="78" index="0" j="0" data:pathOrig="M 32.977642276422756 90.83333333333333 A 67.85569105691059 67.85569105691059 0 0 1 152.81380840147784 47.21653587523351"></path></g><circle id="SvgjsCircle1909" r="57.759247967479695" cx="100.83333333333334" cy="90.83333333333334" class="apexcharts-radialbar-hollow" fill="transparent"></circle><g id="SvgjsG1910" class="apexcharts-datalabels-group" transform="translate(0, 0) scale(1)" style="opacity: 1;"><text id="SvgjsText1911" font-family="Helvetica, Arial, sans-serif" x="100.83333333333334" y="90.83333333333334" text-anchor="middle" dominant-baseline="auto" font-size="22px" font-weight="500" fill="#566a7f" class="apexcharts-text apexcharts-datalabel-value" style="font-family: Helvetica, Arial, sans-serif;">78%</text></g></g></g></g><line id="SvgjsLine1914" x1="0" y1="0" x2="201.66666666666669" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1915" x1="0" y1="0" x2="201.66666666666669" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line></g><g id="SvgjsG1900" class="apexcharts-annotations"></g></svg><div class="apexcharts-legend"></div></div></div>
+                                            <div class="p-3 pt-2">
+                                                <small class="text-muted d-block text-center">Activities-to-Goal</small>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="progress w-75 me-2" style="height: 8px;">
+                                                        <div class="progress-bar bg-success" style="width: 78%" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                    <span>78%</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-6 mb-4">
+                                        <div class="card">
+                                            <div class="card-body pb-0">
+                                                <span class="d-block fw-semibold mb-2 text-center">$ Calls</span>
+                                            </div>
+                                            <div id="expensesChart" class="mb-2" style="min-height: 91.8333px;"><div id="apexchartsg4bvce03" class="apexcharts-canvas apexchartsg4bvce03 apexcharts-theme-light" style="width: 218px; height: 91.8333px;"><svg id="SvgjsSvg1897" width="218" height="91.83333333333334" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;"><g id="SvgjsG1899" class="apexcharts-inner apexcharts-graphical" transform="translate(8.166666666666657, 0)"><defs id="SvgjsDefs1898"><clipPath id="gridRectMaskg4bvce03"><rect id="SvgjsRect1901" width="207.66666666666669" height="183.66666666666669" x="-3" y="-1" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="forecastMaskg4bvce03"></clipPath><clipPath id="nonForecastMaskg4bvce03"></clipPath><clipPath id="gridRectMarkerMaskg4bvce03"><rect id="SvgjsRect1902" width="205.66666666666669" height="185.66666666666669" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath></defs><g id="SvgjsG1903" class="apexcharts-radialbar"><g id="SvgjsG1904"><g id="SvgjsG1905" class="apexcharts-tracks"><g id="SvgjsG1906" class="apexcharts-radialbar-track apexcharts-track" rel="1"><path id="apexcharts-radialbarTrack-0" d="M 32.977642276422756 90.83333333333333 A 67.85569105691059 67.85569105691059 0 0 1 168.68902439024393 90.83333333333334" fill="none" fill-opacity="1" stroke="rgba(242,242,242,0.85)" stroke-opacity="1" stroke-linecap="round" stroke-width="10.19288617886179" stroke-dasharray="0" class="apexcharts-radialbar-area" data:pathOrig="M 32.977642276422756 90.83333333333333 A 67.85569105691059 67.85569105691059 0 0 1 168.68902439024393 90.83333333333334"></path></g></g><g id="SvgjsG1908"><g id="SvgjsG1912" class="apexcharts-series apexcharts-radial-series" seriesName="Progress" rel="1" data:realIndex="0"><path id="SvgjsPath1913" d="M 32.977642276422756 90.83333333333333 A 67.85569105691059 67.85569105691059 0 0 1 152.81380840147784 47.21653587523351" fill="none" fill-opacity="0.85" stroke="#fd7e14" stroke-opacity="1" stroke-linecap="round" stroke-width="10.508130081300816" stroke-dasharray="0" class="apexcharts-radialbar-area apexcharts-radialbar-slice-0" data:angle="140" data:value="58" index="0" j="0" data:pathOrig="M 32.977642276422756 90.83333333333333 A 67.85569105691059 67.85569105691059 0 0 1 152.81380840147784 47.21653587523351"></path></g><circle id="SvgjsCircle1909" r="57.759247967479695" cx="100.83333333333334" cy="90.83333333333334" class="apexcharts-radialbar-hollow" fill="transparent"></circle><g id="SvgjsG1910" class="apexcharts-datalabels-group" transform="translate(0, 0) scale(1)" style="opacity: 1;"><text id="SvgjsText1911" font-family="Helvetica, Arial, sans-serif" x="100.83333333333334" y="90.83333333333334" text-anchor="middle" dominant-baseline="auto" font-size="22px" font-weight="500" fill="#566a7f" class="apexcharts-text apexcharts-datalabel-value" style="font-family: Helvetica, Arial, sans-serif;">58%</text></g></g></g></g><line id="SvgjsLine1914" x1="0" y1="0" x2="201.66666666666669" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1915" x1="0" y1="0" x2="201.66666666666669" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line></g><g id="SvgjsG1900" class="apexcharts-annotations"></g></svg><div class="apexcharts-legend"></div></div></div>
+                                            <div class="p-3 pt-2">
+                                                <small class="text-muted d-block text-center">$ Call Rate</small>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="progress w-75 me-2" style="height: 8px;">
+                                                        <div class="progress-bar bg-warning" style="width: 58%" role="progressbar" aria-valuenow="58" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                    <span>58%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-6 mb-4">
+                                        <div class="card">
+                                            <div class="card-body pb-0">
+                                                <span class="d-block fw-semibold mb-2 text-center">$ Contact</span>
+                                            </div>
+                                            <div id="expensesChart" class="mb-2" style="min-height: 91.8333px;"><div id="apexchartsg4bvce03" class="apexcharts-canvas apexchartsg4bvce03 apexcharts-theme-light" style="width: 218px; height: 91.8333px;"><svg id="SvgjsSvg1897" width="218" height="91.83333333333334" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;"><g id="SvgjsG1899" class="apexcharts-inner apexcharts-graphical" transform="translate(8.166666666666657, 0)"><defs id="SvgjsDefs1898"><clipPath id="gridRectMaskg4bvce03"><rect id="SvgjsRect1901" width="207.66666666666669" height="183.66666666666669" x="-3" y="-1" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="forecastMaskg4bvce03"></clipPath><clipPath id="nonForecastMaskg4bvce03"></clipPath><clipPath id="gridRectMarkerMaskg4bvce03"><rect id="SvgjsRect1902" width="205.66666666666669" height="185.66666666666669" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath></defs><g id="SvgjsG1903" class="apexcharts-radialbar"><g id="SvgjsG1904"><g id="SvgjsG1905" class="apexcharts-tracks"><g id="SvgjsG1906" class="apexcharts-radialbar-track apexcharts-track" rel="1"><path id="apexcharts-radialbarTrack-0" d="M 32.977642276422756 90.83333333333333 A 67.85569105691059 67.85569105691059 0 0 1 168.68902439024393 90.83333333333334" fill="none" fill-opacity="1" stroke="rgba(242,242,242,0.85)" stroke-opacity="1" stroke-linecap="round" stroke-width="10.19288617886179" stroke-dasharray="0" class="apexcharts-radialbar-area" data:pathOrig="M 32.977642276422756 90.83333333333333 A 67.85569105691059 67.85569105691059 0 0 1 168.68902439024393 90.83333333333334"></path></g></g><g id="SvgjsG1908"><g id="SvgjsG1912" class="apexcharts-series apexcharts-radial-series" seriesName="Progress" rel="1" data:realIndex="0"><path id="SvgjsPath1913" d="M 32.977642276422756 90.83333333333333 A 67.85569105691059 67.85569105691059 0 0 1 152.81380840147784 47.21653587523351" fill="none" fill-opacity="0.85" stroke="#03c3ec" stroke-opacity="1" stroke-linecap="round" stroke-width="10.508130081300816" stroke-dasharray="0" class="apexcharts-radialbar-area apexcharts-radialbar-slice-0" data:angle="140" data:value="38" index="0" j="0" data:pathOrig="M 32.977642276422756 90.83333333333333 A 67.85569105691059 67.85569105691059 0 0 1 152.81380840147784 47.21653587523351"></path></g><circle id="SvgjsCircle1909" r="57.759247967479695" cx="100.83333333333334" cy="90.83333333333334" class="apexcharts-radialbar-hollow" fill="transparent"></circle><g id="SvgjsG1910" class="apexcharts-datalabels-group" transform="translate(0, 0) scale(1)" style="opacity: 1;"><text id="SvgjsText1911" font-family="Helvetica, Arial, sans-serif" x="100.83333333333334" y="90.83333333333334" text-anchor="middle" dominant-baseline="auto" font-size="22px" font-weight="500" fill="#566a7f" class="apexcharts-text apexcharts-datalabel-value" style="font-family: Helvetica, Arial, sans-serif;">38%</text></g></g></g></g><line id="SvgjsLine1914" x1="0" y1="0" x2="201.66666666666669" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1915" x1="0" y1="0" x2="201.66666666666669" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line></g><g id="SvgjsG1900" class="apexcharts-annotations"></g></svg><div class="apexcharts-legend"></div></div></div>
+                                            <div class="p-3 pt-2">
+                                                <small class="text-muted d-block text-center">$ Contact Rate</small>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="progress w-75 me-2" style="height: 8px;">
+                                                        <div class="progress-bar bg-info" style="width: 38%" role="progressbar" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                    <span>38%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-6 mb-4">
+                                        <div class="card">
+                                            <div class="card-body pb-0">
+                                                <span class="d-block fw-semibold mb-2 text-center">Appointments</span>
+                                            </div>
+                                            <div id="expensesChart" class="mb-2" style="min-height: 91.8333px;"><div id="apexchartsg4bvce03" class="apexcharts-canvas apexchartsg4bvce03 apexcharts-theme-light" style="width: 218px; height: 91.8333px;"><svg id="SvgjsSvg1897" width="218" height="91.83333333333334" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;"><g id="SvgjsG1899" class="apexcharts-inner apexcharts-graphical" transform="translate(8.166666666666657, 0)"><defs id="SvgjsDefs1898"><clipPath id="gridRectMaskg4bvce03"><rect id="SvgjsRect1901" width="207.66666666666669" height="183.66666666666669" x="-3" y="-1" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="forecastMaskg4bvce03"></clipPath><clipPath id="nonForecastMaskg4bvce03"></clipPath><clipPath id="gridRectMarkerMaskg4bvce03"><rect id="SvgjsRect1902" width="205.66666666666669" height="185.66666666666669" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath></defs><g id="SvgjsG1903" class="apexcharts-radialbar"><g id="SvgjsG1904"><g id="SvgjsG1905" class="apexcharts-tracks"><g id="SvgjsG1906" class="apexcharts-radialbar-track apexcharts-track" rel="1"><path id="apexcharts-radialbarTrack-0" d="M 32.977642276422756 90.83333333333333 A 67.85569105691059 67.85569105691059 0 0 1 168.68902439024393 90.83333333333334" fill="none" fill-opacity="1" stroke="rgba(242,242,242,0.85)" stroke-opacity="1" stroke-linecap="round" stroke-width="10.19288617886179" stroke-dasharray="0" class="apexcharts-radialbar-area" data:pathOrig="M 32.977642276422756 90.83333333333333 A 67.85569105691059 67.85569105691059 0 0 1 168.68902439024393 90.83333333333334"></path></g></g><g id="SvgjsG1908"><g id="SvgjsG1912" class="apexcharts-series apexcharts-radial-series" seriesName="Progress" rel="1" data:realIndex="0"><path id="SvgjsPath1913" d="M 32.977642276422756 90.83333333333333 A 67.85569105691059 67.85569105691059 0 0 1 152.81380840147784 47.21653587523351" fill="none" fill-opacity="0.85" stroke="rgba(67, 89, 113, 0.8)" stroke-opacity="1" stroke-linecap="round" stroke-width="10.508130081300816" stroke-dasharray="0" class="apexcharts-radialbar-area apexcharts-radialbar-slice-0" data:angle="140" data:value="48" index="0" j="0" data:pathOrig="M 32.977642276422756 90.83333333333333 A 67.85569105691059 67.85569105691059 0 0 1 152.81380840147784 47.21653587523351"></path></g><circle id="SvgjsCircle1909" r="57.759247967479695" cx="100.83333333333334" cy="90.83333333333334" class="apexcharts-radialbar-hollow" fill="transparent"></circle><g id="SvgjsG1910" class="apexcharts-datalabels-group" transform="translate(0, 0) scale(1)" style="opacity: 1;"><text id="SvgjsText1911" font-family="Helvetica, Arial, sans-serif" x="100.83333333333334" y="90.83333333333334" text-anchor="middle" dominant-baseline="auto" font-size="22px" font-weight="500" fill="#8592a3" class="apexcharts-text apexcharts-datalabel-value" style="font-family: Helvetica, Arial, sans-serif;">48%</text></g></g></g></g><line id="SvgjsLine1914" x1="0" y1="0" x2="201.66666666666669" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1915" x1="0" y1="0" x2="201.66666666666669" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line></g><g id="SvgjsG1900" class="apexcharts-annotations"></g></svg><div class="apexcharts-legend"></div></div></div>
+                                            <div class="p-3 pt-2">
+                                                <small class="text-muted d-block text-center">$Inbound</small>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="progress w-75 me-2" style="height: 8px;">
+                                                        <div class="progress-bar bg-secondary" style="width: 48%" role="progressbar" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                    <span>48%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <br>*@
+            <div class="row mb-3">
+
+
+                <div class="col-xl-12">
+                    <div class="nav-align-top mb-4">
+                        <ul class="nav nav-pills nav-fill mb-4" role="tablist">
+                            <li class="nav-item" >
+                                <button style="width:100%"  type="button" class="nav-link active " role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-home" aria-controls="navs-pills-justified-home" aria-selected="false"><i class="fa fa-briefcase"></i> SALES</button>
+                            </li>
+                            <li class="nav-item">
+                                <button style="width:100%" type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-profile" aria-controls="navs-pills-justified-profile" aria-selected="false"><i class="fa fa-credit-card"></i> SERVICE</button>
+                            </li>
+                            <li class="nav-item">
+                                <button style="width:100%" type="button" class="nav-link " role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-messages" aria-controls="navs-pills-justified-messages" aria-selected="true"><i class="fa fa-dollar-sign"></i> NON REVENUE</button>
+                            </li>
+                            <li class="nav-item">
+                                <button style="width:100%" type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-Appt" aria-controls="navs-pills-justified-messages" aria-selected="true"><i class="fa fa-calendar"></i> APPT MGMT</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade active show" id="navs-pills-justified-home" role="tabpanel">
+                                <div class="row mb-3">
+                                    <label class="text-black font-w600 form-label" for="multicol-country">DEALERSHIP</label>
+
+
+                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" checked="" autocomplete="off">
+                                        <label class="btn btn-outline-primary rightbad" for="btnradio1">    Milnes Chevrolet</label>
+                                    </div>
+                                      
+
+                                        @*<div class="col-md mb-md-0 mb-2 remove">
+                <div class="form-check custom-option custom-option-icon">
+                    <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                        <span class="custom-option-body">
+
+                            <span class="custom-option-title">Milnes Chevrolet</span>
+
+                        </span>
+                    </label>
+                </div>
+            </div>*@
+                                        @*<div class="col-md mb-md-0 mb-2">
+                <div class="form-check custom-option custom-option-basic">
+                    <label class="form-check-label custom-option-content" for="Dealership1">
+                        <input name="Dealership" class="form-check-input" type="radio" value="" id="Dealership1" checked="">
+                        <span class="custom-option-header">
+                            <span class="fw-semibold">Milnes Chevrolet</span>
+
+                        </span>
+
+                    </label>
+                </div>
+            </div>*@
+
+                                    </div>
+                                    <div class="row mb-3">
+
+
+                                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" checked="" autocomplete="off">
+                                            <label class="btn btn-outline-primary rightbad" for="btnradio1">CHEVROLET  <span class="badge bg-white text-primary bad">or</span></label>
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                                            <label class="btn btn-outline-primary rightbad" for="btnradio2"><span class="badge bg-white text-primary bad2">or</span> PRE OWNED <span class="badge bg-white text-primary bad">or</span></label>
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                                            <label class="btn btn-outline-primary centerbad" for="btnradio3"><span class="badge bg-white text-primary bad2">or</span>UNKNOWED</label>
+                                        </div>
+
+                                        @*<div class="col-md mb-md-0 mb-2 pad">
+                <button type="button" class="btn btn-label-primary" style="width:100%">
+                    CHEVROLET
+                    <span class="badge bg-white text-primary bad">or</span>
+                </button>
+
+            </div>
+            <div class="col-md mb-md-0 mb-2 pad">
+                <button type="button" class="btn btn-label-primary" style="width:100%">
+                    PRE_OWNED
+                    <span class="badge bg-white text-primary bad">or</span>
+                </button>
+
+            </div>
+            <div class="col-md mb-md-0 mb-2 pad">
+                <button type="button" class="btn btn-label-primary" style="width:100%">
+                    UNKNOWED
+
+                </button>
+
+            </div>*@
+                                        @*<div class="col-md mb-md-0 mb-2 remove">
+                <div class="form-check custom-option custom-option-icon">
+                    <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                        <span class="custom-option-body">
+
+                            <span class="">CHEVROLET</span>
+
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="avatar avatar-sm">
+                <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+            </div>
+            <div class="col-md mb-md-0 mb-2 remove">
+                <div class="form-check custom-option custom-option-icon">
+                    <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                        <span class="custom-option-body">
+
+                            <span class="custom-option-title">PRE_OWNED</span>
+
+                        </span>
+                    </label>
+                </div>
+            </div><div class="avatar avatar-sm">
+                <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+            </div>
+            <div class="col-md mb-md-0 mb-2 remove">
+                <div class="form-check custom-option custom-option-icon">
+                    <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                        <span class="custom-option-body">
+
+                            <span class="custom-option-title">UNKNOWED</span>
+
+                        </span>
+                    </label>
+                </div>
+            </div>*@
+                                        @*<div class="col-md mb-md-0 mb-2">
+                <div class="form-check custom-option custom-option-basic">
+                    <label class="form-check-label custom-option-content" for="Brand1">
+                        <input name="Brand" class="form-check-input" type="radio" value="" id="Brand1" checked="">
+                        <span class="custom-option-header">
+                            <span class="fw-semibold">CHEVROLET</span>
+
+                        </span>
+
+                    </label>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-check custom-option custom-option-basic">
+                    <label class="form-check-label custom-option-content" for="Brand2">
+                        <input name="Brand" class="form-check-input" type="radio" value="" id="Brand2">
+                        <span class="custom-option-header">
+                            <span class="fw-semibold">PRE_OWNED</span>
+
+                        </span>
+
+                    </label>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-check custom-option custom-option-basic">
+                    <label class="form-check-label custom-option-content" for="Brand3">
+                        <input name="Brand" class="form-check-input" type="radio" value="" id="Brand3">
+                        <span class="custom-option-header">
+                            <span class="fw-semibold">UNKNOWED</span>
+
+                        </span>
+
+                    </label>
+                </div>
+            </div>*@
+
+                                    </div>
+
+
+
+                                    <div class="row mb-3">
+                                        <label class="text-black font-w600 form-label" for="multicol-country">ORIGNATING LEAD SOURCE</label>
+
+
+                                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                            <input type="radio" class="btn-check" name="LEAD" id="LEADbtnradio1" checked="" autocomplete="off">
+                                            <label class="btn btn-outline-primary rightbad" for="LEADbtnradio1">Inbound Call  <span class="badge bg-white text-primary bad">or</span></label>
+                                            <input type="radio" class="btn-check" name="LEAD" id="LEADbtnradio2" autocomplete="off">
+                                            <label class="btn btn-outline-primary rightbad" for="LEADbtnradio2"> <span class="badge bg-white text-primary bad2">or</span>Internet <span class="badge bg-white text-primary bad">or</span></label>
+                                            <input type="radio" class="btn-check" name="LEAD" id="LEADbtnradio3" autocomplete="off">
+                                            <label class="btn btn-outline-primary rightbad" for="LEADbtnradio3"><span class="badge bg-white text-primary bad2">or</span>Chat <span class="badge bg-white text-primary bad">or</span></label>
+                                            <input type="radio" class="btn-check" name="LEAD" id="LEADbtnradio4" autocomplete="off">
+                                            <label class="btn btn-outline-primary rightbad" for="LEADbtnradio4"><span class="badge bg-white text-primary bad2">or</span>Text <span class="badge bg-white text-primary bad">or</span></label>
+                                            <input type="radio" class="btn-check" name="LEAD" id="LEADbtnradio5" autocomplete="off">
+                                            <label class="btn btn-outline-primary rightbad" for="LEADbtnradio5"> <span class="badge bg-white text-primary bad2">or</span> Walk-In <span class="badge bg-white text-primary bad">or</span></label>
+                                            <input type="radio" class="btn-check" name="LEAD" id="LEADbtnradio6" autocomplete="off">
+                                            <label class="btn btn-outline-primary centerbad" for="LEADbtnradio6">  <span class="badge bg-white text-primary bad2">or</span> Rockstar Campaign </label>
+                                        </div>
+
+                                        @*<div class="col-md mb-md-0 mb-2 pad">
+                <button type="button" class="btn btn-label-primary" style="width:100%">
+                    Inbound Call
+                    <span class="badge bg-white text-primary bad">or</span>
+                </button>
+
+            </div>
+            <div class="col-md mb-md-0 mb-2 pad">
+                <button type="button" class="btn btn-label-primary" style="width:100%">
+                    Internet
+                    <span class="badge bg-white text-primary bad">or</span>
+                </button>
+
+            </div>
+            <div class="col-md mb-md-0 mb-2 pad">
+                <button type="button" class="btn btn-label-primary" style="width:100%">
+                    Chat
+                    <span class="badge bg-white text-primary bad" style="">or</span>
+                </button>
+
+            </div>
+            <div class="col-md mb-md-0 mb-2 pad">
+                <button type="button" class="btn btn-label-primary" style="width:100%">
+                    Text
+                    <span class="badge bg-white text-primary bad" style="">or</span>
+                </button>
+
+            </div>
+            <div class="col-md mb-md-0 mb-2 pad">
+                <button type="button" class="btn btn-label-primary" style="width:100%">
+                    Walk-In
+                    <span class="badge bg-white text-primary bad" style="">or</span>
+                </button>
+
+            </div>
+            <div class="col-md mb-md-0 mb-2 pad">
+                <button type="button" class="btn btn-label-primary" style="width:100%">
+                    Rockstar Campaign
+                    <span class="badge bg-white text-primary bad" style="">or</span>
+                </button>
+
+            </div>*@
+
+
+                                        @*<div class="col-md mb-md-0 mb-2 remove">
+                <div class="form-check custom-option custom-option-icon">
+                    <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                        <span class="custom-option-body">
+
+                            <span class="custom-option-title">Inbound Call</span>
+
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="avatar avatar-sm">
+                <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+            </div>
+            <div class="col-md mb-md-0 mb-2 remove">
+                <div class="form-check custom-option custom-option-icon">
+                    <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                        <span class="custom-option-body">
+
+                            <span class="custom-option-title">Internet</span>
+
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="avatar avatar-sm">
+                <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+            </div>
+            <div class="col-md mb-md-0 mb-2 remove">
+                <div class="form-check custom-option custom-option-icon">
+                    <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                        <span class="custom-option-body">
+
+                            <span class="custom-option-title">Chat</span>
+
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="avatar avatar-sm">
+                <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+            </div>
+            <div class="col-md mb-md-0 mb-2 remove">
+                <div class="form-check custom-option custom-option-icon">
+                    <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                        <span class="custom-option-body">
+
+                            <span class="custom-option-title">Text</span>
+
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="avatar avatar-sm">
+                <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+            </div>
+            <div class="col-md mb-md-0 mb-2 remove">
+                <div class="form-check custom-option custom-option-icon">
+                    <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                        <span class="custom-option-body">
+
+                            <span class="custom-option-title">Walk-In</span>
+
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="avatar avatar-sm">
+                <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+            </div>
+            <div class="col-md mb-md-0 mb-2 remove">
+                <div class="form-check custom-option custom-option-icon">
+                    <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                        <span class="custom-option-body">
+
+                            <span class="custom-option-title">Rockstar Campaign</span>
+
+                        </span>
+                    </label>
+                </div>
+            </div>*@
+
+
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class=" col-md-4">
+                                            <label class="text-black font-w600 form-label" for="multicol-country">LEADS LABELS</label>
+                                            <div class="row">
+
+                                                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                                    <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+                                                    <label class="btn btn-outline-primary rightbad" for="btncheck1">FRESH LEAD</label>
+                                                    <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+                                                    <label class="btn btn-outline-primary centerbad" for="btncheck2">  CONTACT INFO</label>
+                                                </div>
+
+                                                @*<div class="col-md mb-md-0 mb-2 pad">
+                        <button type="button" class="btn btn-label-primary" style="width:100%">
+                            FRESH LEAD
+
+                        </button>
+
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 pad">
+                        <button type="button" class="btn btn-label-primary" style="width:100%">
+                            CONTACT INFO
+
+                        </button>
+
+                    </div>*@
+                                                @*<div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">FRESH LEAD</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">CONTACT INFO</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>*@
+                                            </div>
+                                        </div>
+                                        <div class=" col-md-8">
+                                            <div class="row">
+                                                <div class="col-md mb-md-0 mb-2">
+
+                                                    <label class="text-black font-w600 form-label" for="multicol-country">FOLLOW-UP PROCESS</label>
+                                                    <select id="multicol-country" class="select2 form-select" data-allow-clear="true">
+                                                        <option value="">Select</option>
+                                                        <option value="Australia">Male</option>
+                                                        <option value="Bangladesh">Female</option>
+                                                        <option value="United States">Not Specified</option>
+                                                    </select>
+
+                                                </div>
+                                                <div class="col-md mb-md-0 mb-2">
+
+                                                    <label class="text-black font-w600 form-label" for="multicol-country">COMPAIGN</label>
+                                                    <select id="multicol-country" class="select2 form-select" data-allow-clear="true">
+                                                        <option value="">Select</option>
+                                                        <option value="Australia">Male</option>
+                                                        <option value="Bangladesh">Female</option>
+                                                        <option value="United States">Not Specified</option>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row mb-3">
+                                        <div class=" col-md-8">
+                                            <label class="text-black font-w600 form-label" for="multicol-country">ACTIVITY CALL</label>
+                                            <div class="row">
+                                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                    <input type="radio" class="btn-check" name="ACTIVITY" id="ACTIVITYbtnradio1" checked="" autocomplete="off">
+                                                    <label class="btn btn-outline-primary rightbad" for="ACTIVITYbtnradio1">Left Msg<span class="badge bg-white text-primary bad">or</span></label>
+                                                    <input type="radio" class="btn-check" name="ACTIVITY" id="ACTIVITYbtnradio2" autocomplete="off">
+                                                    <label class="btn btn-outline-primary rightbad" for="ACTIVITYbtnradio2"> <span class="badge bg-white text-primary bad1">or</span>Completed <span class="badge bg-white text-primary bad">or</span></label>
+                                                    <input type="radio" class="btn-check" name="ACTIVITY" id="ACTIVITYbtnradio3" autocomplete="off">
+                                                    <label class="btn btn-outline-primary rightbad" for="ACTIVITYbtnradio3"><span class="badge bg-white text-primary bad1">or</span>Phone Up <span class="badge bg-white text-primary bad">or</span></label>
+                                                    <input type="radio" class="btn-check" name="ACTIVITY" id="ACTIVITYbtnradio4" autocomplete="off">
+                                                    <label class="btn btn-outline-primary rightbad" for="ACTIVITYbtnradio4"><span class="badge bg-white text-primary bad1">or</span>Callback <span class="badge bg-white text-primary bad">or</span></label>
+                                                    <input type="radio" class="btn-check" name="ACTIVITY" id="ACTIVITYbtnradio5" autocomplete="off">
+                                                    <label class="btn btn-outline-primary centerbad" for="ACTIVITYbtnradio5"> <span class="badge bg-white text-primary bad1">or</span> None </label>
+
+                                                </div>
+                                                @*<div class="col-md mb-md-0 mb-2 remove">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Left Msg</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="avatar avatar-sm">
+                        <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 remove">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Completed</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="avatar avatar-sm">
+                        <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 remove">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Phone Up</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="avatar avatar-sm">
+                        <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 remove">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Callback</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="avatar avatar-sm">
+                        <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">None</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>*@
+
+                                            </div>
+                                        </div>
+                                        <div class=" col-md-2">
+                                            <label class="text-black font-w600 form-label" for="multicol-country">EMAIL</label>
+                                            <div class="row">
+                                                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                                    <input type="checkbox" class="btn-check" id="EMAILbtncheck1" autocomplete="off">
+                                                    <label class="btn btn-outline-primary rightbad" for="EMAILbtncheck1">Rec'd</label>
+                                                    <input type="checkbox" class="btn-check" id="EMAILbtncheck2" autocomplete="off">
+                                                    <label class="btn btn-outline-primary rightbad" for="EMAILbtncheck2">Sent</label>
+
+                                                </div>
+                                                @*<div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Rec'd</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Sent</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>*@
+                                            </div>
+
+                                        </div>
+                                        <div class=" col-md-2">
+                                            <label class="text-black font-w600 form-label" for="multicol-country">TEXT</label>
+                                            <div class="row">
+
+                                                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                                    <input type="checkbox" class="btn-check" id="TEXTbtncheck1" autocomplete="off">
+                                                    <label class="btn btn-outline-primary rightbad" for="TEXTbtncheck1">Rec'd</label>
+                                                    <input type="checkbox" class="btn-check" id="TEXTbtncheck2" autocomplete="off">
+                                                    <label class="btn btn-outline-primary rightbad" for="TEXTbtncheck2">Sent</label>
+
+                                                </div>
+                                                @*<div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Rec'd</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Sent</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>*@
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row mb-3">
+                                        <div class=" col-md-6">
+                                            <label class="text-black font-w600 form-label" for="multicol-country">Numbers Dialed</label>
+                                            <div class="row">
+                                                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                                    <input type="checkbox" class="btn-check" id="Numbersbtncheck1" autocomplete="off">
+                                                    <label class="btn btn-outline-primary rightbad" for="Numbersbtncheck1">Work</label>
+                                                    <input type="checkbox" class="btn-check" id="Numbersbtncheck2" autocomplete="off">
+                                                    <label class="btn btn-outline-primary rightbad" for="Numbersbtncheck2">Cell</label>
+                                                    <input type="checkbox" class="btn-check" id="Numbersbtncheck3" autocomplete="off">
+                                                    <label class="btn btn-outline-primary rightbad" for="Numbersbtncheck3">Home</label>
+                                                    <input type="checkbox" class="btn-check" id="Numbersbtncheck4" autocomplete="off">
+                                                    <label class="btn btn-outline-primary rightbad" for="Numbersbtncheck4">Other</label>
+                                                </div>
+
+
+                                                @*<div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Work</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Cell</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Home</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Other</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>*@
+
+                                            </div>
+                                        </div>
+                                        <div class=" col-md-6">
+                                            <label class="text-black font-w600 form-label" for="multicol-country">ACTIONS</label>
+                                            <div class="row">
+
+                                                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                                    <input type="checkbox" class="btn-check" id="ACTIONSbtncheck1" autocomplete="off">
+                                                    <label class="btn btn-outline-primary rightbad" for="ACTIONSbtncheck1">Book Appointment</label>
+                                                    <input type="checkbox" class="btn-check" id="ACTIONSbtncheck2" autocomplete="off">
+                                                    <label class="btn btn-outline-primary rightbad" for="ACTIONSbtncheck2">Transfer Opportunity</label>
+
+                                                </div>
+                                                @*<div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Book Appointment</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Transfer Opportunity</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>*@
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <label class="text-black font-w600 form-label" for="name"><i class="fa fa-user"></i> NAME </label>
+                                            <div class="input-group input-group-merge">
+                                                <input type="text" id="name" name="name" class="form-control" placeholder="NAME" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-2">
+                                            <label class="text-black font-w600 form-label" for="Phone"><i class="fa fa-calendar"></i> DATE</label>
+                                            <div class="input-group input-group-merge">
+                                                <input type="text" id="Phone" name="Phone" class="form-control" placeholder="DATE" />
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <label class="text-black font-w600 form-label" for="Address"><i class="fa fa-phone"></i> CELL</label>
+                                            <div class="input-group input-group-merge">
+                                                <input type="text" id="Address" name="Address" class="form-control" placeholder="CELL" />
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <label class="text-black font-w600 form-label" for="Address"><i class="fa fa-sticky-note"></i> VIN</label>
+                                            <div class="input-group input-group-merge">
+                                                <input type="text" id="Address" name="Address" class="form-control" placeholder="VIN/Vehicle Notes" />
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <label class="text-black font-w600 form-label" for="Address"><i class="fa fa-credit-card"></i> Appointment Credit</label>
+                                            <div class="input-group input-group-merge">
+                                                <input type="text" id="Address" name="Address" class="form-control" placeholder="Appointment Credit" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex  pt-3" style="float:right">
+                                        <a href="javascript:;" class="btn btn-primary me-3" data-bs-target="#editUser" data-bs-toggle="modal">SAVE</a>
+                                        <a href="javascript:;" class="btn btn-outline-primary">SAVE & REPEAT</a>
+                                    </div>
+                                </div>
+                            <div class="tab-pane fade" id="navs-pills-justified-profile" role="tabpanel">
+                                <div class="row mb-3">
+                                    <label class="text-black font-w600 form-label" for="multicol-country">DEALERSHIP</label>
+
+
+                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" checked="" autocomplete="off">
+                                        <label class="btn btn-outline-primary rightbad" for="btnradio1">    Milnes Chevrolet</label>
+                                    </div>
+
+                                    @*<div class="col-md mb-md-0 mb-2 remove">
+                <div class="form-check custom-option custom-option-icon">
+                    <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                        <span class="custom-option-body">
+
+                            <span class="custom-option-title">Milnes Chevrolet</span>
+
+                        </span>
+                    </label>
+                </div>
+            </div>*@
+                                    @*<div class="col-md mb-md-0 mb-2">
+                <div class="form-check custom-option custom-option-basic">
+                    <label class="form-check-label custom-option-content" for="Dealership1">
+                        <input name="Dealership" class="form-check-input" type="radio" value="" id="Dealership1" checked="">
+                        <span class="custom-option-header">
+                            <span class="fw-semibold">Milnes Chevrolet</span>
+
+                        </span>
+
+                    </label>
+                </div>
+            </div>*@
+
+                                </div>
+                                <div class="row mb-3">
+
+
+                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                        <input type="radio" class="btn-check" name="SEbtnradio" id="SEbtnradio1" checked="" autocomplete="off">
+                                        <label class="btn btn-outline-primary rightbad" for="SEbtnradio1">CHEVROLET  <span class="badge bg-white text-primary bad">or</span></label>
+                                        <input type="radio" class="btn-check" name="SEbtnradio" id="SEbtnradio2" autocomplete="off">
+                                        <label class="btn btn-outline-primary rightbad" for="SEbtnradio2"><span class="badge bg-white text-primary bad2">or</span> PRE OWNED <span class="badge bg-white text-primary bad">or</span></label>
+                                        <input type="radio" class="btn-check" name="SEbtnradio" id="SEbtnradio3" autocomplete="off">
+                                        <label class="btn btn-outline-primary centerbad" for="SEbtnradio3"><span class="badge bg-white text-primary bad2">or</span>UNKNOWED</label>
+                                    </div>
+
+                                    @*<div class="col-md mb-md-0 mb-2 pad">
+                <button type="button" class="btn btn-label-primary" style="width:100%">
+                    CHEVROLET
+                    <span class="badge bg-white text-primary bad">or</span>
+                </button>
+
+            </div>
+            <div class="col-md mb-md-0 mb-2 pad">
+                <button type="button" class="btn btn-label-primary" style="width:100%">
+                    PRE_OWNED
+                    <span class="badge bg-white text-primary bad">or</span>
+                </button>
+
+            </div>
+            <div class="col-md mb-md-0 mb-2 pad">
+                <button type="button" class="btn btn-label-primary" style="width:100%">
+                    UNKNOWED
+
+                </button>
+
+            </div>*@
+                                    @*<div class="col-md mb-md-0 mb-2 remove">
+                <div class="form-check custom-option custom-option-icon">
+                    <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                        <span class="custom-option-body">
+
+                            <span class="">CHEVROLET</span>
+
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="avatar avatar-sm">
+                <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+            </div>
+            <div class="col-md mb-md-0 mb-2 remove">
+                <div class="form-check custom-option custom-option-icon">
+                    <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                        <span class="custom-option-body">
+
+                            <span class="custom-option-title">PRE_OWNED</span>
+
+                        </span>
+                    </label>
+                </div>
+            </div><div class="avatar avatar-sm">
+                <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+            </div>
+            <div class="col-md mb-md-0 mb-2 remove">
+                <div class="form-check custom-option custom-option-icon">
+                    <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                        <span class="custom-option-body">
+
+                            <span class="custom-option-title">UNKNOWED</span>
+
+                        </span>
+                    </label>
+                </div>
+            </div>*@
+                                    @*<div class="col-md mb-md-0 mb-2">
+                <div class="form-check custom-option custom-option-basic">
+                    <label class="form-check-label custom-option-content" for="Brand1">
+                        <input name="Brand" class="form-check-input" type="radio" value="" id="Brand1" checked="">
+                        <span class="custom-option-header">
+                            <span class="fw-semibold">CHEVROLET</span>
+
+                        </span>
+
+                    </label>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-check custom-option custom-option-basic">
+                    <label class="form-check-label custom-option-content" for="Brand2">
+                        <input name="Brand" class="form-check-input" type="radio" value="" id="Brand2">
+                        <span class="custom-option-header">
+                            <span class="fw-semibold">PRE_OWNED</span>
+
+                        </span>
+
+                    </label>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-check custom-option custom-option-basic">
+                    <label class="form-check-label custom-option-content" for="Brand3">
+                        <input name="Brand" class="form-check-input" type="radio" value="" id="Brand3">
+                        <span class="custom-option-header">
+                            <span class="fw-semibold">UNKNOWED</span>
+
+                        </span>
+
+                    </label>
+                </div>
+            </div>*@
+
+                                </div>
+
+
+
+                                <div class="row mb-3">
+                                    <label class="text-black font-w600 form-label" for="multicol-country">ORIGNATING LEAD SOURCE</label>
+
+
+                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                        <input type="radio" class="btn-check" name="SELEAD" id="SELEADbtnradio1" checked="" autocomplete="off">
+                                        <label class="btn btn-outline-primary rightbad" for="SELEADbtnradio1">Inbound Call  <span class="badge bg-white text-primary bad">or</span></label>
+                                        <input type="radio" class="btn-check" name="SELEAD" id="SELEADbtnradio2" autocomplete="off">
+                                        <label class="btn btn-outline-primary rightbad" for="SELEADbtnradio2"> <span class="badge bg-white text-primary bad2">or</span>Internet <span class="badge bg-white text-primary bad">or</span></label>
+                                        <input type="radio" class="btn-check" name="SELEAD" id="SELEADbtnradio3" autocomplete="off">
+                                        <label class="btn btn-outline-primary rightbad" for="SELEADbtnradio3"><span class="badge bg-white text-primary bad2">or</span>Chat <span class="badge bg-white text-primary bad">or</span></label>
+                                        <input type="radio" class="btn-check" name="SELEAD" id="SELEADbtnradio4" autocomplete="off">
+                                        <label class="btn btn-outline-primary rightbad" for="SELEADbtnradio4"><span class="badge bg-white text-primary bad2">or</span>Text <span class="badge bg-white text-primary bad">or</span></label>
+                                        <input type="radio" class="btn-check" name="SELEAD" id="SELEADbtnradio5" autocomplete="off">
+                                        <label class="btn btn-outline-primary rightbad" for="SELEADbtnradio5"> <span class="badge bg-white text-primary bad2">or</span> Walk-In <span class="badge bg-white text-primary bad">or</span></label>
+                                        <input type="radio" class="btn-check" name="SELEAD" id="SELEADbtnradio6" autocomplete="off">
+                                        <label class="btn btn-outline-primary centerbad" for="SELEADbtnradio6">  <span class="badge bg-white text-primary bad2">or</span> Rockstar Campaign </label>
+                                    </div>
+
+                                    @*<div class="col-md mb-md-0 mb-2 pad">
+                <button type="button" class="btn btn-label-primary" style="width:100%">
+                    Inbound Call
+                    <span class="badge bg-white text-primary bad">or</span>
+                </button>
+
+            </div>
+            <div class="col-md mb-md-0 mb-2 pad">
+                <button type="button" class="btn btn-label-primary" style="width:100%">
+                    Internet
+                    <span class="badge bg-white text-primary bad">or</span>
+                </button>
+
+            </div>
+            <div class="col-md mb-md-0 mb-2 pad">
+                <button type="button" class="btn btn-label-primary" style="width:100%">
+                    Chat
+                    <span class="badge bg-white text-primary bad" style="">or</span>
+                </button>
+
+            </div>
+            <div class="col-md mb-md-0 mb-2 pad">
+                <button type="button" class="btn btn-label-primary" style="width:100%">
+                    Text
+                    <span class="badge bg-white text-primary bad" style="">or</span>
+                </button>
+
+            </div>
+            <div class="col-md mb-md-0 mb-2 pad">
+                <button type="button" class="btn btn-label-primary" style="width:100%">
+                    Walk-In
+                    <span class="badge bg-white text-primary bad" style="">or</span>
+                </button>
+
+            </div>
+            <div class="col-md mb-md-0 mb-2 pad">
+                <button type="button" class="btn btn-label-primary" style="width:100%">
+                    Rockstar Campaign
+                    <span class="badge bg-white text-primary bad" style="">or</span>
+                </button>
+
+            </div>*@
+
+
+                                    @*<div class="col-md mb-md-0 mb-2 remove">
+                <div class="form-check custom-option custom-option-icon">
+                    <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                        <span class="custom-option-body">
+
+                            <span class="custom-option-title">Inbound Call</span>
+
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="avatar avatar-sm">
+                <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+            </div>
+            <div class="col-md mb-md-0 mb-2 remove">
+                <div class="form-check custom-option custom-option-icon">
+                    <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                        <span class="custom-option-body">
+
+                            <span class="custom-option-title">Internet</span>
+
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="avatar avatar-sm">
+                <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+            </div>
+            <div class="col-md mb-md-0 mb-2 remove">
+                <div class="form-check custom-option custom-option-icon">
+                    <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                        <span class="custom-option-body">
+
+                            <span class="custom-option-title">Chat</span>
+
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="avatar avatar-sm">
+                <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+            </div>
+            <div class="col-md mb-md-0 mb-2 remove">
+                <div class="form-check custom-option custom-option-icon">
+                    <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                        <span class="custom-option-body">
+
+                            <span class="custom-option-title">Text</span>
+
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="avatar avatar-sm">
+                <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+            </div>
+            <div class="col-md mb-md-0 mb-2 remove">
+                <div class="form-check custom-option custom-option-icon">
+                    <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                        <span class="custom-option-body">
+
+                            <span class="custom-option-title">Walk-In</span>
+
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="avatar avatar-sm">
+                <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+            </div>
+            <div class="col-md mb-md-0 mb-2 remove">
+                <div class="form-check custom-option custom-option-icon">
+                    <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                        <span class="custom-option-body">
+
+                            <span class="custom-option-title">Rockstar Campaign</span>
+
+                        </span>
+                    </label>
+                </div>
+            </div>*@
+
+
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class=" col-md-4">
+                                        <label class="text-black font-w600 form-label" for="multicol-country">LEADS LABELS</label>
+                                        <div class="row">
+
+                                            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                                <input type="checkbox" class="btn-check" id="SEbtncheck1" autocomplete="off">
+                                                <label class="btn btn-outline-primary rightbad" for="SEbtncheck1">FRESH LEAD</label>
+                                                <input type="checkbox" class="btn-check" id="SEbtncheck2" autocomplete="off">
+                                                <label class="btn btn-outline-primary centerbad" for="SEbtncheck2">  CONTACT INFO</label>
+                                            </div>
+
+                                            @*<div class="col-md mb-md-0 mb-2 pad">
+                        <button type="button" class="btn btn-label-primary" style="width:100%">
+                            FRESH LEAD
+
+                        </button>
+
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 pad">
+                        <button type="button" class="btn btn-label-primary" style="width:100%">
+                            CONTACT INFO
+
+                        </button>
+
+                    </div>*@
+                                            @*<div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">FRESH LEAD</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">CONTACT INFO</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>*@
+                                        </div>
+                                    </div>
+                                    <div class=" col-md-8">
+                                        <div class="row">
+                                            <div class="col-md mb-md-0 mb-2">
+
+                                                <label class="text-black font-w600 form-label" for="multicol-country">FOLLOW-UP PROCESS</label>
+                                                <select id="multicol-country" class="select2 form-select" data-allow-clear="true">
+                                                    <option value="">Select</option>
+                                                    <option value="Australia">Male</option>
+                                                    <option value="Bangladesh">Female</option>
+                                                    <option value="United States">Not Specified</option>
+                                                </select>
+
+                                            </div>
+                                            <div class="col-md mb-md-0 mb-2">
+
+                                                <label class="text-black font-w600 form-label" for="multicol-country">COMPAIGN</label>
+                                                <select id="multicol-country" class="select2 form-select" data-allow-clear="true">
+                                                    <option value="">Select</option>
+                                                    <option value="Australia">Male</option>
+                                                    <option value="Bangladesh">Female</option>
+                                                    <option value="United States">Not Specified</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="row mb-3">
+                                    <div class=" col-md-8">
+                                        <label class="text-black font-w600 form-label" for="multicol-country">ACTIVITY CALL</label>
+                                        <div class="row">
+                                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                <input type="radio" class="btn-check" name="SEACTIVITY" id="SEACTIVITYbtnradio1" checked="" autocomplete="off">
+                                                <label class="btn btn-outline-primary rightbad" for="SEACTIVITYbtnradio1">Left Msg<span class="badge bg-white text-primary bad">or</span></label>
+                                                <input type="radio" class="btn-check" name="SEACTIVITY" id="SEACTIVITYbtnradio2" autocomplete="off">
+                                                <label class="btn btn-outline-primary rightbad" for="SEACTIVITYbtnradio2"> <span class="badge bg-white text-primary bad1">or</span>Completed <span class="badge bg-white text-primary bad">or</span></label>
+                                                <input type="radio" class="btn-check" name="SEACTIVITY" id="SEACTIVITYbtnradio3" autocomplete="off">
+                                                <label class="btn btn-outline-primary rightbad" for="SEACTIVITYbtnradio3"><span class="badge bg-white text-primary bad1">or</span>Phone Up <span class="badge bg-white text-primary bad">or</span></label>
+                                                <input type="radio" class="btn-check" name="SEACTIVITY" id="SEACTIVITYbtnradio4" autocomplete="off">
+                                                <label class="btn btn-outline-primary rightbad" for="SEACTIVITYbtnradio4"><span class="badge bg-white text-primary bad1">or</span>Callback <span class="badge bg-white text-primary bad">or</span></label>
+                                                <input type="radio" class="btn-check" name="SEACTIVITY" id="SEACTIVITYbtnradio5" autocomplete="off">
+                                                <label class="btn btn-outline-primary centerbad" for="SEACTIVITYbtnradio5"> <span class="badge bg-white text-primary bad1">or</span> None </label>
+
+                                            </div>
+                                            @*<div class="col-md mb-md-0 mb-2 remove">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Left Msg</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="avatar avatar-sm">
+                        <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 remove">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Completed</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="avatar avatar-sm">
+                        <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 remove">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Phone Up</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="avatar avatar-sm">
+                        <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 remove">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Callback</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="avatar avatar-sm">
+                        <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">None</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>*@
+
+                                        </div>
+                                    </div>
+                                    <div class=" col-md-2">
+                                        <label class="text-black font-w600 form-label" for="multicol-country">EMAIL</label>
+                                        <div class="row">
+                                            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                                <input type="checkbox" class="btn-check" id="SEEMAILbtncheck1" autocomplete="off">
+                                                <label class="btn btn-outline-primary rightbad" for="SEEMAILbtncheck1">Rec'd</label>
+                                                <input type="checkbox" class="btn-check" id="SEEMAILbtncheck2" autocomplete="off">
+                                                <label class="btn btn-outline-primary rightbad" for="SEEMAILbtncheck2">Sent</label>
+
+                                            </div>
+                                            @*<div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Rec'd</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Sent</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>*@
+                                        </div>
+
+                                    </div>
+                                    <div class=" col-md-2">
+                                        <label class="text-black font-w600 form-label" for="multicol-country">TEXT</label>
+                                        <div class="row">
+
+                                            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                                <input type="checkbox" class="btn-check" id="SETEXTbtncheck1" autocomplete="off">
+                                                <label class="btn btn-outline-primary rightbad" for="SETEXTbtncheck1">Rec'd</label>
+                                                <input type="checkbox" class="btn-check" id="SETEXTbtncheck2" autocomplete="off">
+                                                <label class="btn btn-outline-primary rightbad" for="SETEXTbtncheck2">Sent</label>
+
+                                            </div>
+                                            @*<div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Rec'd</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Sent</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>*@
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+                                <div class="row mb-3">
+                                    <div class=" col-md-6">
+                                        <label class="text-black font-w600 form-label" for="multicol-country">Numbers Dialed</label>
+                                        <div class="row">
+                                            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                                <input type="checkbox" class="btn-check" id="SENumbersbtncheck1" autocomplete="off">
+                                                <label class="btn btn-outline-primary rightbad" for="SENumbersbtncheck1">Work</label>
+                                                <input type="checkbox" class="btn-check" id="SENumbersbtncheck2" autocomplete="off">
+                                                <label class="btn btn-outline-primary rightbad" for="SENumbersbtncheck2">Cell</label>
+                                                <input type="checkbox" class="btn-check" id="SENumbersbtncheck3" autocomplete="off">
+                                                <label class="btn btn-outline-primary rightbad" for="SENumbersbtncheck3">Home</label>
+                                                <input type="checkbox" class="btn-check" id="SENumbersbtncheck4" autocomplete="off">
+                                                <label class="btn btn-outline-primary rightbad" for="SENumbersbtncheck4">Other</label>
+                                            </div>
+
+
+                                            @*<div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Work</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Cell</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Home</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Other</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>*@
+
+                                        </div>
+                                    </div>
+                                    <div class=" col-md-6">
+                                        <label class="text-black font-w600 form-label" for="multicol-country">ACTIONS</label>
+                                        <div class="row">
+
+                                            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                                <input type="checkbox" class="btn-check" id="SEACTIONSbtncheck1" autocomplete="off">
+                                                <label class="btn btn-outline-primary rightbad" for="SEACTIONSbtncheck1">Book Appointment</label>
+                                                <input type="checkbox" class="btn-check" id="SEACTIONSbtncheck2" autocomplete="off">
+                                                <label class="btn btn-outline-primary rightbad" for="SEACTIONSbtncheck2">Transfer Opportunity</label>
+
+                                            </div>
+                                            @*<div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Book Appointment</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 remove3">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">Transfer Opportunity</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>*@
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-2">
+                                        <label class="text-black font-w600 form-label" for="name"><i class="fa fa-user"></i> NAME </label>
+                                        <div class="input-group input-group-merge">
+                                            <input type="text" id="name" name="name" class="form-control" placeholder="NAME" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-2">
+                                        <label class="text-black font-w600 form-label" for="Phone"><i class="fa fa-calendar"></i> DATE</label>
+                                        <div class="input-group input-group-merge">
+                                            <input type="text" id="Phone" name="Phone" class="form-control" placeholder="DATE" />
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <label class="text-black font-w600 form-label" for="Address"><i class="fa fa-phone"></i> CELL</label>
+                                        <div class="input-group input-group-merge">
+                                            <input type="text" id="Address" name="Address" class="form-control" placeholder="CELL" />
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <label class="text-black font-w600 form-label" for="Address"><i class="fa fa-sticky-note"></i> VIN</label>
+                                        <div class="input-group input-group-merge">
+                                            <input type="text" id="Address" name="Address" class="form-control" placeholder="VIN/Vehicle Notes" />
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <label class="text-black font-w600 form-label" for="Address"><i class="fa fa-credit-card"></i> Appointment Credit</label>
+                                        <div class="input-group input-group-merge">
+                                            <input type="text" id="Address" name="Address" class="form-control" placeholder="Appointment Credit" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex  pt-3" style="float:right">
+                                    <a href="javascript:;" class="btn btn-primary me-3" data-bs-target="#editUser" data-bs-toggle="modal">SAVE</a>
+                                    <a href="javascript:;" class="btn btn-outline-primary">SAVE & REPEAT</a>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade " id="navs-pills-justified-messages" role="tabpanel">
+
+                                <div class="row mb-3">
+                                    <label class="text-black font-w600 form-label" for="multicol-country">DEALERSHIP</label>
+                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" checked="" autocomplete="off">
+                                        <label class="btn btn-outline-primary rightbad" for="btnradio1">    Milnes Chevrolet</label>
+                                    </div>
+                                    @*<div class="col-md mb-md-0 mb-2 remove">
+            <div class="form-check custom-option custom-option-icon">
+                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                    <span class="custom-option-body">
+
+                        <span class="custom-option-title">Milnes Chevrolet</span>
+
+                    </span>
+                </label>
+            </div>
+        </div>*@
+
+
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label class="text-black font-w600 form-label" for="multicol-country">CALL TYPE</label>
+                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                        <input type="radio" class="btn-check" name="CALL" id="CALLbtnradio1" checked="" autocomplete="off">
+                                        <label class="btn btn-outline-primary rightbad" for="CALLbtnradio1">SALE<span class="badge bg-white text-primary bad">or</span></label>
+                                        <input type="radio" class="btn-check" name="CALL" id="CALLbtnradio2" autocomplete="off">
+                                        <label class="btn btn-outline-primary rightbad" for="CALLbtnradio2"> <span class="badge bg-white text-primary bad2">or</span>SERVICE <span class="badge bg-white text-primary bad">or</span></label>
+                                        <input type="radio" class="btn-check" name="CALL" id="CALLbtnradio3" autocomplete="off">
+                                        <label class="btn btn-outline-primary rightbad" for="CALLbtnradio3"><span class="badge bg-white text-primary bad2">or</span>PARTS<span class="badge bg-white text-primary bad">or</span></label>
+                                        <input type="radio" class="btn-check" name="CALL" id="CALLbtnradio4" autocomplete="off">
+                                        <label class="btn btn-outline-primary rightbad" for="CALLbtnradio4"><span class="badge bg-white text-primary bad2">or</span>FINANCE <span class="badge bg-white text-primary bad">or</span></label>
+                                        <input type="radio" class="btn-check" name="CALL" id="CALLbtnradio5" autocomplete="off">
+                                        <label class="btn btn-outline-primary centerbad" for="CALLbtnradio5"> <span class="badge bg-white text-primary bad2">or</span> OTHER </label>
+
+                                    </div>
+                                    @*<div class="col-md mb-md-0 mb-2 remove">
+                                            <div class="form-check custom-option custom-option-icon">
+                                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                                    <span class="custom-option-body">
+
+                                                        <span class="custom-option-title">SALE</span>
+
+                                                    </span>
+                                                </label>
+                                            </div>
+
+                                        </div> <div class="avatar avatar-sm">
+                                            <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+                                        </div>
+                                        <div class="col-md mb-md-0 mb-2 remove">
+                                            <div class="form-check custom-option custom-option-icon">
+                                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                                    <span class="custom-option-body">
+
+                                                        <span class="custom-option-title">SERVICE</span>
+
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div><div class="avatar avatar-sm">
+                                            <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+                                        </div>
+                                        <div class="col-md mb-md-0 mb-2 remove">
+                                            <div class="form-check custom-option custom-option-icon">
+                                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                                    <span class="custom-option-body">
+
+                                                        <span class="custom-option-title">PARTS</span>
+
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div><div class="avatar avatar-sm">
+                                            <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+                                        </div>
+                                        <div class="col-md mb-md-0 mb-2 remove">
+                                            <div class="form-check custom-option custom-option-icon">
+                                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                                    <span class="custom-option-body">
+
+                                                        <span class="custom-option-title">FINANCE</span>
+
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div><div class="avatar avatar-sm">
+                                            <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+                                        </div>
+                                        <div class="col-md mb-md-0 mb-2 remove">
+                                            <div class="form-check custom-option custom-option-icon">
+                                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                                    <span class="custom-option-body">
+
+                                                        <span class="custom-option-title">OTHER</span>
+
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>*@
+
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class=" col-md-5">
+                                        <label class="text-black font-w600 form-label" for="multicol-country">INQUIRY TYPE</label>
+                                        <div class="row">
+                                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                <input type="radio" class="btn-check" name="INQUIRY" id="INQUIRYbtnradio1" checked="" autocomplete="off">
+                                                <label class="btn btn-outline-primary rightbad" for="INQUIRYbtnradio1">PHONE UP<span class="badge bg-white text-primary bad">or</span></label>
+                                                <input type="radio" class="btn-check" name="INQUIRY" id="INQUIRYbtnradio2" autocomplete="off">
+                                                <label class="btn btn-outline-primary rightbad" for="INQUIRYbtnradio2"> <span class="badge bg-white text-primary bad3">or</span>FOLLOW UP <span class="badge bg-white text-primary bad">or</span></label>
+                                                <input type="radio" class="btn-check" name="INQUIRY" id="INQUIRYbtnradio3" autocomplete="off">
+                                                <label class="btn btn-outline-primary centerbad" for="INQUIRYbtnradio3"><span class="badge bg-white text-primary bad3">or</span>CSI</label>
+
+                                            </div>
+                                            @*<div class="col-md mb-md-0 mb-2 remove">
+                    <div class="form-check custom-option custom-option-icon">
+                        <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                            <span class="custom-option-body">
+
+                                <span class="custom-option-title">PHONE UP</span>
+
+                            </span>
+                        </label>
+                    </div>
+                </div><div class="avatar avatar-sm">
+                    <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+                </div>
+                <div class="col-md mb-md-0 mb-2 remove">
+                    <div class="form-check custom-option custom-option-icon">
+                        <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                            <span class="custom-option-body">
+
+                                <span class="custom-option-title">FOLLOW UP</span>
+
+                            </span>
+                        </label>
+                    </div>
+                </div><div class="avatar avatar-sm">
+                    <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+                </div>
+                <div class="col-md mb-md-0 mb-2 remove">
+                    <div class="form-check custom-option custom-option-icon">
+                        <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                            <span class="custom-option-body">
+
+                                <span class="custom-option-title">CSI</span>
+
+                            </span>
+                        </label>
+                    </div>
+                </div>*@
+                                        </div>
+                                    </div>
+                                    <div class=" col-md-7">
+                                        <div class="row">
+                                            <div class="col-md-8 mb-md-0 mb-2">
+                                                <div class="row">
+                                                    <label class="text-black font-w600 form-label" for="multicol-country">TRANSFERED TO</label>
+
+                                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                        <input type="radio" class="btn-check" name="TRANSFERED" id="TRANSFEREDbtnradio1" checked="" autocomplete="off">
+                                                        <label class="btn btn-outline-primary rightbad" for="TRANSFEREDbtnradio1">BDC<span class="badge bg-white text-primary bad">or</span></label>
+                                                        <input type="radio" class="btn-check" name="TRANSFERED" id="TRANSFEREDbtnradio2" autocomplete="off">
+                                                        <label class="btn btn-outline-primary rightbad" for="TRANSFEREDbtnradio2"> <span class="badge bg-white text-primary bad2">or</span>SALES</label>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 mb-md-0 mb-2">
+
+                                                <label class="text-black font-w600 form-label" for="multicol-country">Department</label>
+                                                <select id="multicol-country" class="select2 form-select" data-allow-clear="true">
+                                                    <option value="">Select</option>
+                                                    <option value="Australia">Male</option>
+                                                    <option value="Bangladesh">Female</option>
+                                                    <option value="United States">Not Specified</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="d-flex  pt-3" style="float:right">
+                                        <a href="javascript:;" class="btn btn-primary me-3" data-bs-target="#editUser" data-bs-toggle="modal">SAVE</a>
+                                        
+                                    </div>
+                                </div>
+                                @*<div class="col-md mb-md-0 mb-2 remove1">
+                                        <div class="form-check custom-option custom-option-icon">
+                                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                                <span class="custom-option-body">
+
+                                                    <span class="custom-option-title">BDC</span>
+
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div><div class="avatar avatar-sm">
+                                        <span class="avatar-initial rounded-circle bg-label-danger">OR</span>
+                                    </div>
+                                    <div class="col-md mb-md-0 mb-2 remove2">
+                                        <div class="form-check custom-option custom-option-icon">
+                                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                                <span class="custom-option-body">
+
+                                                    <span class="custom-option-title">SALES DEPT</span>
+
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>*@
+                            </div>
+                            <div class="tab-pane fade" id="navs-pills-Appt" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-md-6"> <h5 class="card-header">APPOINTMENTS</h5></div>
+                                </div>
+                                <div class="card-datatable table-responsive">
+                                    <table class="datatables-users table border-top" id="EbayProduct">
+                                        <thead>
+                                            <tr>
+                                                <th>DateTme</th>
+                                                <th>Customer</th>
+                                                <th>Phone</th>
+                                                <th>Type</th>
+                                                <th>Booked By</th>
+                                                <th>Confirmed</th>
+                                                <th>Notes</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>2/8/2022  8:00 AM</td>
+                                                <td>WILLIAM RICHEY</td>
+                                                <td>-</td>
+                                                <td>Service</td>
+                                                <td>Admin</td>
+                                                <td>NO</td>
+                                                <td>-</td>
+
+                                                <td>
+                                                   
+                                                    <div class="d-flex">
+                                                        <a href="#" class="btn btn-primary shadow btn-sm sharp me-1" data-bs-toggle="modal" data-bs-target="#enableOTP"><i class="fa fa-pen"></i></a>
+                                                  
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                @*<div class="col-md mb-md-0 mb-2 remove">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">SALES</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md mb-md-0 mb-2 remove">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">SERVICE</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div> <div class="col-md mb-md-0 mb-2 remove">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">NON-REVENUE</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div> <div class="col-md mb-md-0 mb-2 remove">
+                        <div class="form-check custom-option custom-option-icon">
+                            <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                <span class="custom-option-body">
+
+                                    <span class="custom-option-title">APPT.MGMT</span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>*@
+
+                @*<div class="col-md mb-md-0 mb-2">
+                        <div class="form-check custom-option custom-option-basic">
+                            <label class="form-check-label custom-option-content" for="Type1">
+                                <input name="ConsoleType" class="form-check-input" type="radio" value="" id="Type1" checked="">
+                                <span class="custom-option-header">
+                                    <span class="fw-semibold">SALES</span>
+
+                                </span>
+
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-check custom-option custom-option-basic">
+                            <label class="form-check-label custom-option-content" for="Type2">
+                                <input name="ConsoleType" class="form-check-input" type="radio" value="" id="Type2">
+                                <span class="custom-option-header">
+                                    <span class="fw-semibold">SERVICE</span>
+
+                                </span>
+
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-check custom-option custom-option-basic">
+                            <label class="form-check-label custom-option-content" for="Type3">
+                                <input name="ConsoleType" class="form-check-input" type="radio" value="" id="Type3">
+                                <span class="custom-option-header">
+                                    <span class="fw-semibold">NON-REVENUE</span>
+
+                                </span>
+
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-check custom-option custom-option-basic">
+                            <label class="form-check-label custom-option-content" for="Type4">
+                                <input name="ConsoleType" class="form-check-input" type="radio" value="" id="Type4">
+                                <span class="custom-option-header">
+                                    <span class="fw-semibold">APPT.MGMT</span>
+
+                                </span>
+
+                            </label>
+                        </div>
+                    </div>*@
+            </div>
+
+
+            <!--<div class="row mb-3">
+                <label class="text-black font-w600 form-label" for="multicol-country">DEALERSHIP</label>
+                <div class="col-md mb-md-0 mb-2">
+                    <div class="form-check custom-option custom-option-icon">
+                        <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                            <span class="custom-option-body">
+
+                                <span class="custom-option-title">Milnes Chevrolet</span>
+
+                            </span>
+                        </label>
+                    </div>
+                </div>-->
+            @*<div class="col-md mb-md-0 mb-2">
+                    <div class="form-check custom-option custom-option-basic">
+                        <label class="form-check-label custom-option-content" for="Dealership1">
+                            <input name="Dealership" class="form-check-input" type="radio" value="" id="Dealership1" checked="">
+                            <span class="custom-option-header">
+                                <span class="fw-semibold">Milnes Chevrolet</span>
+
+                            </span>
+
+                        </label>
+                    </div>
+                </div>*@
+
+            <!--</div>
+            <div class="row mb-3">
+                <div class="col-md mb-md-0 mb-2 remove">
+                    <div class="form-check custom-option custom-option-icon">
+                        <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                            <span class="custom-option-body">
+
+                                <span class="custom-option-title">CHEVROLET</span>
+
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md mb-md-0 mb-2 remove">
+                    <div class="form-check custom-option custom-option-icon">
+                        <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                            <span class="custom-option-body">
+
+                                <span class="custom-option-title">PRE_OWNED</span>
+
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md mb-md-0 mb-2 remove">
+                    <div class="form-check custom-option custom-option-icon">
+                        <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                            <span class="custom-option-body">
+
+                                <span class="custom-option-title">UNKNOWED</span>
+
+                            </span>
+                        </label>
+                    </div>
+                </div>-->
+            @*<div class="col-md mb-md-0 mb-2">
+                    <div class="form-check custom-option custom-option-basic">
+                        <label class="form-check-label custom-option-content" for="Brand1">
+                            <input name="Brand" class="form-check-input" type="radio" value="" id="Brand1" checked="">
+                            <span class="custom-option-header">
+                                <span class="fw-semibold">CHEVROLET</span>
+
+                            </span>
+
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-check custom-option custom-option-basic">
+                        <label class="form-check-label custom-option-content" for="Brand2">
+                            <input name="Brand" class="form-check-input" type="radio" value="" id="Brand2">
+                            <span class="custom-option-header">
+                                <span class="fw-semibold">PRE_OWNED</span>
+
+                            </span>
+
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-check custom-option custom-option-basic">
+                        <label class="form-check-label custom-option-content" for="Brand3">
+                            <input name="Brand" class="form-check-input" type="radio" value="" id="Brand3">
+                            <span class="custom-option-header">
+                                <span class="fw-semibold">UNKNOWED</span>
+
+                            </span>
+
+                        </label>
+                    </div>
+                </div>*@
+
+            <!--</div>
+
+
+
+            <div class="row mb-3">
+                <label class="text-black font-w600 form-label" for="multicol-country">ORIGNATING LEAD SOURCE</label>
+                <div class="col-md mb-md-0 mb-2 remove">
+                    <div class="form-check custom-option custom-option-icon">
+                        <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                            <span class="custom-option-body">
+
+                                <span class="custom-option-title">Inbound Call</span>
+
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md mb-md-0 mb-2 remove">
+                    <div class="form-check custom-option custom-option-icon">
+                        <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                            <span class="custom-option-body">
+
+                                <span class="custom-option-title">Internet</span>
+
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md mb-md-0 mb-2 remove">
+                    <div class="form-check custom-option custom-option-icon">
+                        <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                            <span class="custom-option-body">
+
+                                <span class="custom-option-title">Chat</span>
+
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md mb-md-0 mb-2 remove">
+                    <div class="form-check custom-option custom-option-icon">
+                        <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                            <span class="custom-option-body">
+
+                                <span class="custom-option-title">Text</span>
+
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md mb-md-0 mb-2 remove">
+                    <div class="form-check custom-option custom-option-icon">
+                        <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                            <span class="custom-option-body">
+
+                                <span class="custom-option-title">Walk-In</span>
+
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md mb-md-0 mb-2 remove">
+                    <div class="form-check custom-option custom-option-icon">
+                        <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                            <span class="custom-option-body">
+
+                                <span class="custom-option-title">Proactive Campaign</span>
+
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="row mb-3">
+                <div class=" col-md-4">
+                    <label class="text-black font-w600 form-label" for="multicol-country">LEADS LABELS</label>
+                    <div class="row">
+                        <div class="col-md mb-md-0 mb-2 remove">
+                            <div class="form-check custom-option custom-option-icon">
+                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                    <span class="custom-option-body">
+
+                                        <span class="custom-option-title">FRESH LEAD</span>
+
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md mb-md-0 mb-2 remove">
+                            <div class="form-check custom-option custom-option-icon">
+                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                    <span class="custom-option-body">
+
+                                        <span class="custom-option-title">CONTACT INFO</span>
+
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-md-8">
+                    <div class="row">
+                        <div class="col-md mb-md-0 mb-2">
+
+                            <label class="text-black font-w600 form-label" for="multicol-country">FOLLOW-UP PROCESS</label>
+                            <select id="multicol-country" class="select2 form-select" data-allow-clear="true">
+                                <option value="">Select</option>
+                                <option value="Australia">Male</option>
+                                <option value="Bangladesh">Female</option>
+                                <option value="United States">Not Specified</option>
+                            </select>
+
+                        </div>
+                        <div class="col-md mb-md-0 mb-2">
+
+                            <label class="text-black font-w600 form-label" for="multicol-country">COMPAIGN</label>
+                            <select id="multicol-country" class="select2 form-select" data-allow-clear="true">
+                                <option value="">Select</option>
+                                <option value="Australia">Male</option>
+                                <option value="Bangladesh">Female</option>
+                                <option value="United States">Not Specified</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <div class=" col-md-6">
+                    <label class="text-black font-w600 form-label" for="multicol-country">ACTIVITY CALL</label>
+                    <div class="row">
+                        <div class="col-md mb-md-0 mb-2 remove">
+                            <div class="form-check custom-option custom-option-icon">
+                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                    <span class="custom-option-body">
+
+                                        <span class="custom-option-title">Left Msg</span>
+
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md mb-md-0 mb-2 remove">
+                            <div class="form-check custom-option custom-option-icon">
+                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                    <span class="custom-option-body">
+
+                                        <span class="custom-option-title">Completed</span>
+
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md mb-md-0 mb-2 remove">
+                            <div class="form-check custom-option custom-option-icon">
+                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                    <span class="custom-option-body">
+
+                                        <span class="custom-option-title">Phone Up</span>
+
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md mb-md-0 mb-2 remove">
+                            <div class="form-check custom-option custom-option-icon">
+                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                    <span class="custom-option-body">
+
+                                        <span class="custom-option-title">Callback</span>
+
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md mb-md-0 mb-2 remove">
+                            <div class="form-check custom-option custom-option-icon">
+                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                    <span class="custom-option-body">
+
+                                        <span class="custom-option-title">None</span>
+
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-md-3">
+                    <label class="text-black font-w600 form-label" for="multicol-country">EMAIL</label>
+                    <div class="row">
+                        <div class="col-md mb-md-0 mb-2 remove1">
+                            <div class="form-check custom-option custom-option-icon">
+                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                    <span class="custom-option-body">
+
+                                        <span class="custom-option-title">Rec'd</span>
+
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md mb-md-0 mb-2 remove">
+                            <div class="form-check custom-option custom-option-icon">
+                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                    <span class="custom-option-body">
+
+                                        <span class="custom-option-title">Sent</span>
+
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class=" col-md-3">
+                    <label class="text-black font-w600 form-label" for="multicol-country">TEXT</label>
+                    <div class="row">
+                        <div class="col-md mb-md-0 mb-2 remove1">
+                            <div class="form-check custom-option custom-option-icon">
+                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                    <span class="custom-option-body">
+
+                                        <span class="custom-option-title">Rec'd</span>
+
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md mb-md-0 mb-2 remove">
+                            <div class="form-check custom-option custom-option-icon">
+                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                    <span class="custom-option-body">
+
+                                        <span class="custom-option-title">Sent</span>
+
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="row mb-3">
+                <div class=" col-md-6">
+                    <label class="text-black font-w600 form-label" for="multicol-country">Numbers Dialed</label>
+                    <div class="row">
+                        <div class="col-md mb-md-0 mb-2 remove">
+                            <div class="form-check custom-option custom-option-icon">
+                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                    <span class="custom-option-body">
+
+                                        <span class="custom-option-title">Work</span>
+
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md mb-md-0 mb-2 remove">
+                            <div class="form-check custom-option custom-option-icon">
+                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                    <span class="custom-option-body">
+
+                                        <span class="custom-option-title">Cell</span>
+
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md mb-md-0 mb-2 remove">
+                            <div class="form-check custom-option custom-option-icon">
+                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                    <span class="custom-option-body">
+
+                                        <span class="custom-option-title">Home</span>
+
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md mb-md-0 mb-2 remove">
+                            <div class="form-check custom-option custom-option-icon">
+                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                    <span class="custom-option-body">
+
+                                        <span class="custom-option-title">Other</span>
+
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class=" col-md-6">
+                    <label class="text-black font-w600 form-label" for="multicol-country">ACTIONS</label>
+                    <div class="row">
+                        <div class="col-md mb-md-0 mb-2 remove1">
+                            <div class="form-check custom-option custom-option-icon">
+                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                    <span class="custom-option-body">
+
+                                        <span class="custom-option-title">Book Appointment</span>
+
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md mb-md-0 mb-2 remove">
+                            <div class="form-check custom-option custom-option-icon">
+                                <label class="form-check-label custom-option-content" for="customRadioPercentage">
+                                    <span class="custom-option-body">
+
+                                        <span class="custom-option-title">Transfer Opportunity</span>
+
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="d-flex justify-content-center pt-3">
+                <a href="javascript:;" class="btn btn-primary me-3" data-bs-target="#editUser" data-bs-toggle="modal">SAVE</a>
+                <a href="javascript:;" class="btn btn-label-secondary suspend-user">SAVE & REPEAT</a>
+            </div>-->
+        </div>
+    </div>
+
+    <div class="modal fade" id="enableOTP" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-simple modal-enable-otp modal-dialog-centered">
+            <div class="modal-content p-3 p-md-3">
+                <div class="modal-header" style="background-color:#5F3A81;">
+
+                    <h3 class="modal-title" style="color: white"><i class="fa fa-calendar"></i> Appointment</h3>
+
+
+
+                </div>
+                <form id="enableOTPForm" class="row g-3" onsubmit="return false">
+                    <div class="modal-body">
+
+
+
+                        <div class="col-12 mb-2">
+                            <label class="text-black font-w600 form-label" for="name"><i class="fa fa-user"></i> CUSTOMER NAME </label>
+                            <div class="input-group input-group-merge">
+                                <input type="text" id="name" name="name" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-2">
+                            <label class="text-black font-w600 form-label" for="Phone"><i class="fa fa-calendar"></i> DATE</label>
+                            <div class="input-group input-group-merge">
+                                <input type="text" id="Phone" name="Phone" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label class="text-black font-w600 form-label" for="Address"><i class="fa fa-briefcase"></i> DEALERSHIP</label>
+                            <div class="input-group input-group-merge">
+                                <input type="text" id="Address" name="Address" class="form-control" />
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-12 mb-2">
+                            <label class="text-black font-w600 form-label" for="name">TYPE</label>
+                            <select id="multicol-country" class="select2 form-select form-control" data-allow-clear="true">
+                                <option value="1">Select</option>
+                                <option value="Dealership">RESCHEDULE</option>
+                                <option value="Business">CONFIRM</option>
+
+                            </select>
+                        </div>
+                        <div class="col-12 mb-2">
+                            @*<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="Appointment" id="Appointmentbtnradio1" checked="" autocomplete="off">
+                        <label class="btn btn-outline-primary rightbad" for="Appointmentbtnradio1">CANCEL<span class="badge bg-white text-primary bad">or</span></label>
+                        <input type="radio" class="btn-check" name="Appointment" id="Appointmentbtnradio2" autocomplete="off">
+                        <label class="btn btn-outline-primary rightbad" for="Appointmentbtnradio2"> <span class="badge bg-white text-primary bad2">or</span>RESCHEDULE <span class="badge bg-white text-primary bad">or</span></label>
+                        <input type="radio" class="btn-check" name="Appointment" id="Appointmentbtnradio3" autocomplete="off">
+                        <label class="btn btn-outline-primary rightbad" for="Appointmentbtnradio3"><span class="badge bg-white text-primary bad2">or</span>CONFIRM</label>
+
+                    </div>*@
+
+                            <label class="text-black font-w600 form-label" for="Phone"><i class="fa fa-calendar"></i> DATE</label>
+                            <div class="input-group input-group-merge">
+                                <input type="date" id="Phone" name="Phone" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-12" style="float:right">
+
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="submit" class="btn btn-primary me-sm-3 me-1">Save</button>
+                        <button type="reset" class="btn btn-outline-primary" data-bs-dismiss="modal" aria-label="Close">Search Again</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<script>
+
+            $(document).ready(function () {
+                $('#EbayProduct').DataTable({
+                    searching: true,
+                    "ordering": true,
+
+                });
+                $(".nav li").removeClass("active");
+                $('#Agent').addClass('active');
+            });
+</script>
+<script>
+            //$(document).ready(function () {
+            //    document.body.style.zoom = "95%";
+            //});
+</script>
